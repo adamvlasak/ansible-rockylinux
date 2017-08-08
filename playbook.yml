@@ -23,34 +23,34 @@
     - name: install necessary packages
       apt: name={{ item }} state=latest
       with_items:
-        - git
-        - tig
-        - mc
-        - subversion
-        - mercurial
-        - build-essential
-        - vim
-        - curl
-        - wget
-        - ca-certificates
-        - iftop
-        - htop
-        - jnettop
         - atop
         - bash-completion
-        - tmux
+        - build-essential
+        - ca-certificates
+        - curl
+        - dnsmasq
+        - dnsutils
+        - git
+        - htop
+        - iftop
+        - jnettop
+        - mc
+        - mercurial
+        - net-tools
         - python
-        - python3
         - python-dev
-        - python3-dev
         - python-virtualenv
+        - python3
+        - python3-dev
         - python3-virtualenv
         - ruby
         - ruby-dev
         - rubygems
-        - net-tools
-        - dnsutils
-        - dnsmasq
+        - subversion
+        - tig
+        - tmux
+        - vim
+        - wget
 
     - name: install fpm package manager
       gem: name=fpm state=latest user_install=no
