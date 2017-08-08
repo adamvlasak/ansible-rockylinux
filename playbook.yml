@@ -70,7 +70,7 @@
     - name: provision .gitconfig
       copy:
         content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}"
-        dest: {{ item }}
+        dest: "{{ item }}"
       with_items:
         - /root/.gitconfig
         - /vagrant/.gitconfig
