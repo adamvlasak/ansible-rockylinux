@@ -1,0 +1,76 @@
+---
+- name: setup work machine
+  hosts: all
+  become: true
+  vars:
+    username: "John Doe"
+    email: "john.doe@example.org"
+    ssh_pubkey: "foobar"
+  tasks:
+    - name: install aptitude stuff
+      apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+      with_items:
+        - aptitude
+        - python-apt
+        - python3-apt
+    - name: upgrade whole distro
+      apt: upgrade=safe
+    - name: install necessary packages
+      apt: name={{ item }} state=latest
+      with_items:
+        - git
+        - tig
+        - mc
+        - subversion
+        - mercurial
+        - build-essential
+        - vim
+        - curl
+        - wget
+        - ca-certificates
+        - iftop
+        - htop
+        - jnettop
+        - atop
+        - bash-completion
+        - tmux
+        - python
+        - python3
+        - python-dev
+        - python3-dev
+        - python-virtualenv
+        - python3-virtualenv
+        - ruby
+        - ruby-dev
+        - rubygems
+        - net-tools
+        - dnsutils
+        - dnsmasq
+    - name: install fpm package manager
+      gem: name=fpm state=latest user_install=no
+    - name: generate locales
+      locale_gen: name=en_US.UTF-8 state=present
+    - name: setup correct time
+      file: src=/usr/share/zoneinfo/Europe/Prague dest=/etc/localtime force=yes state=link
+    - name: setup authorized_keys for root
+      authorized_key:
+        user: root
+        key: "{{ ssh_pubkey }}"
+        state: present
+    - name: set NCURSES_NO_UTF8_ACS=1
+      copy: dest=/etc/profile.d/ncurses_utf-8_fix.sh content="export NCURSES_NO_UTF8_ACS=1\n"
+    - name: install dnsmasq
+      apt: name=dnsmasq state=latest
+    - name: configure dnsmasq
+      copy: src=dnsmasq.conf dest=/etc/dnsmasq.conf
+    - name: set resolv.conf nameserver to localhost
+      copy: content="nameserver=127.0.0.1\n" dest=/etc/resolv.conf
+    - name: restart dnsmasq
+      service: name=dnsmasq state=restarted
+    - name: provision .gitconfig
+      copy:
+        content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}"
+        dest: {{ item }}
+      with_items:
+        - /root/.gitconfig
+        - /vagrant/.gitconfig
