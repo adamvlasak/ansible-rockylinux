@@ -2,6 +2,7 @@
 ignoreip = 127.0.0.1/8 93.181.106.34
 bantime = 86400
 findtime = 604800
+backend = polling
 
 [ssh]
 

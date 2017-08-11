@@ -106,6 +106,9 @@
         group: root
         mode: 0644
 
+    - name: restart fail2ban
+      service: name=fail2ban state=restarted
+
     - name: provision .gitconfig
       copy:
         content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}\n[push]\n\tdefault = simple\n"
