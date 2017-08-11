@@ -3,38 +3,8 @@
   hosts: all
   become: true
 
-  vars:
-    email: "john.doe@example.org"
-    username: "John Doe"
-    login: johndoe
-    ssh_pubkey: "foobar"
-
   tasks:
+    - include_vars: vars/user.yml
     - include: tasks/base.yml
-
-    - name: create group for intended user
-      group: name="{{ login }}"
-
-    - name: create intended user
-      user:
-        name: "{{ login }}"
-        group: "{{ login }}"
-        shell: /bin/bash
-        home: "/home/{{ login }}"
-
-    - name: setup authorized_keys for all intended users
-      authorized_key:
-        user: "{{ item }}"
-        key: "{{ ssh_pubkey }}"
-        state: present
-      with_items:
-        - root
-        - "{{ login }}"
-
-    - name: provision .gitconfig
-      copy:
-        content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}\n[push]\n\tdefault = simple\n"
-        dest: "{{ item }}"
-      with_items:
-        - /root/.gitconfig
+    - include: tasks/user.yml
 
