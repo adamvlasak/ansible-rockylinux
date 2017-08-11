@@ -108,7 +108,7 @@
 
     - name: provision .gitconfig
       copy:
-        content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}"
+        content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}\n[push]\n\tdefault = simple\n"
         dest: "{{ item }}"
       with_items:
         - /root/.gitconfig
