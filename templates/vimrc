@@ -1,0 +1,6 @@
+set number 
+set showmode
+set nocompatible
+set backspace=2
+syntax on
+set fileencodings=utf-8,latin2

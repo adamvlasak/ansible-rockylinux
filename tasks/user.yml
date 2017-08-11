@@ -35,3 +35,12 @@
     src: templates/bashrc
   tags: user
 
+- name: provision .vimrc
+  template:
+    dest: "{{ item }}"
+    src: templates/vimrc
+  with_items:
+    - /root/.vimrc
+    - "/home/{{ login }}/.vimrc"
+  tags: user
+
