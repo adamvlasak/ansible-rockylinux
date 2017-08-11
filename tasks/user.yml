@@ -1,5 +1,6 @@
 - name: create group for intended user
   group: name="{{ login }}"
+  tags: user
 
 - name: create intended user
   user:
@@ -7,6 +8,7 @@
     group: "{{ login }}"
     shell: /bin/bash
     home: "/home/{{ login }}"
+  tags: user
 
 - name: setup authorized_keys for all intended users
   authorized_key:
@@ -16,6 +18,7 @@
   with_items:
     - root
     - "{{ login }}"
+  tags: user
 
 - name: provision .gitconfig
   copy:
@@ -24,5 +27,11 @@
   with_items:
     - /root/.gitconfig
     - "/home/{{ login }}/.gitconfig"
+  tags: user
 
+- name: setup bashrc
+  template:
+    dest: /etc/profile.d/bashrc.sh
+    src: templates/bashrc
+  tags: user
 
