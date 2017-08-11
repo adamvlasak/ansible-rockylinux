@@ -95,6 +95,9 @@
     - name: restart dnsmasq
       service: name=dnsmasq state=restarted
 
+    - name: install fail2ban
+      apt: name=fail2ban state=latest
+
     - name: provision .gitconfig
       copy:
         content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}"
