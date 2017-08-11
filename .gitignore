@@ -1,3 +1,4 @@
 .vagrant/
 .gitconfig
 *.retry
+vars/user.yml
