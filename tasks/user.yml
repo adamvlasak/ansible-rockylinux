@@ -23,5 +23,6 @@
     dest: "{{ item }}"
   with_items:
     - /root/.gitconfig
+    - "/home/{{ login }}/.gitconfig"
 
 
