@@ -1,0 +1,20 @@
+[DEFAULT]
+ignoreip = 127.0.0.1/8 93.181.106.34
+bantime = 86400
+findtime = 604800
+
+[ssh]
+
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3
+
+[ssh-ddos]
+
+enabled  = false
+port     = ssh
+filter   = sshd-ddos
+logpath  = /var/log/auth.log
+maxretry = 3

@@ -87,7 +87,7 @@
       apt: name=dnsmasq state=latest
 
     - name: configure dnsmasq
-      copy: src=dnsmasq.conf dest=/etc/dnsmasq.conf
+      copy: src=templates/dnsmasq.conf dest=/etc/dnsmasq.conf
 
     - name: set resolv.conf nameserver to localhost
       copy: content="nameserver=127.0.0.1\n" dest=/etc/resolv.conf
