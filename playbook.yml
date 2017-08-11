@@ -78,7 +78,6 @@
         state: present
       with_items:
         - root
-        - vagrant
         - "{{ login }}"
 
     - name: set NCURSES_NO_UTF8_ACS=1
@@ -102,4 +101,3 @@
         dest: "{{ item }}"
       with_items:
         - /root/.gitconfig
-        - /vagrant/.gitconfig
