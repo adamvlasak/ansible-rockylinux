@@ -6,6 +6,10 @@ shopt -s histappend
 export HISTSIZE=1000
 export HISTFILESIZE=2000
 
+export EDITOR=vim
+# export TERM=xterm-256color
+export TERM=screen-256color
+
 shopt -s checkwinsize
 
 alias ls='ls --color=auto'
