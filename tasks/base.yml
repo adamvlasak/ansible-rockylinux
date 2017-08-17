@@ -99,6 +99,7 @@
     regexp: "^#?ListenAddress 0.0.0.0"
     insertafter: "^#?ListenAddress 0.0.0.0"
     line: "ListenAddress 0.0.0.0"
+  notify: ssh
 
 - name: disable password auth in ssh
   lineinfile:
@@ -106,3 +107,4 @@
     regexp: "^#?PasswordAuthentication yes|no"
     insertafter: "^#?PasswordAuthentication yes|no"
     line: "PasswordAuthentication no"
+  notify: ssh
