@@ -1,0 +1,12 @@
+- name: fail2ban
+  service:
+    name: fail2ban
+    state: restarted
+- name: dnsmasq
+  service:
+    name: dnsmasq
+    state: reloaded
+- name: ssh
+  service:
+    name: ssh
+    state: reloaded
