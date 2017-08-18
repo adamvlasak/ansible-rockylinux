@@ -1,5 +1,6 @@
 - name: create group for intended user
-  group: name="{{ login }}"
+  group:
+    name: "{{ login }}"
   tags: user
 
 - name: create intended user
@@ -71,3 +72,12 @@
   with_items:
     - /root/.vim/bundle/syntastic.git
     - /home/{{ login }}/.vim/bundle/syntastic.git
+
+- name: put ansible syntax colors into bundle directory
+  git:
+    repo: https://github.com/pearofducks/ansible-vim
+    dest: "{{ item }}"
+    update: yes
+  with_items:
+    - /root/.vim/bundle/ansible-vim
+    - /home/{{ login }}/.vim/bundle/ansible-vim
