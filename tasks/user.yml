@@ -43,3 +43,31 @@
     - /root/.vimrc
     - "/home/{{ login }}/.vimrc"
   tags: user
+
+- name: prepare pathogen directories
+  file:
+    path: "{{ item }}"
+    recurse: yes
+  with_items:
+    - /root/.vim/autoload
+    - /root/.vim/bundle
+    - /home/{{ login }}/.vim/autoload
+    - /home/{{ login }}/.vim/bundle
+
+- name: download pathogen
+  get_url:
+    url: https://tpo.pe/pathogen.vim
+    dest: "{{ item  }}"
+  with_items:
+    - /root/.vim/autoload/pathogen.vim
+    - /home/{{ login }}/.vim/autoload/pathogen.vim
+
+- name: put syntastic into bundle directory
+  git:
+    repo: https://github.com/vim-syntastic/syntastic.git
+    dest: "{{ item }}"
+    update: yes
+    depth: 1
+  with_items:
+    - /root/.vim/bundle/syntastic.git
+    - /home/{{ login }}/.vim/bundle/syntastic.git
