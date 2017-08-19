@@ -2,11 +2,25 @@
 
 ## Overview
 
-TODO
+This project provisions your debian based OS for better user experience.
 
-## What can you do
+## How to install ansible via pip
 
-### Run ansible inside docker
+    $ apt-get update
+    $ apt-get install curl wget vim git tig build-essential sudo python-virtualenv python-crypto python-setuptools python-dev libffi-dev libssl-dev
+    $ cd work-machine/
+    $ virtualenv .
+    $ . bin/activate
+    $ pip install ansible
 
-	$ cd ansible-playbooks
-	$ docker run -ti --rm --volume $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent -v $PWD:/var/ansible-playbooks ansible:latest ansible-playbook -i inventory playbook.yml
+## Provisioning
+
+    $ cd work-machine/
+    $ cp vars/user.example vars.yml
+    $ touch inventory # add your own server
+
+You must edit the file in vars/user.yml according to your needs! Then run playbook:
+
+    $ ansible-playbook -i inventory playbook.yml
+
+Done!
