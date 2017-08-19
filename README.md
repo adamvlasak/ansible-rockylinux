@@ -21,6 +21,10 @@ This project provisions your debian based OS for better user experience.
 
 You must edit the file in vars/user.yml according to your needs! Then run playbook:
 
-    $ ansible-playbook -i inventory playbook.yml
+    $ make provision
+
+or
+
+    $ make provision-dockerized
 
 Done!
