@@ -80,6 +80,11 @@
     content: "nameserver=127.0.0.1\n"
     dest: /etc/resolv.conf
 
+- name: restart dnsmasq
+  service:
+    name: dnsmasq
+    state: restarted
+
 - name: install fail2ban
   apt:
     name: fail2ban
@@ -96,7 +101,7 @@
 
 - name: make sshd listen only on ipv4
   lineinfile:
-    path: /etc/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
     regexp: "^#?ListenAddress 0.0.0.0"
     insertafter: "^#?ListenAddress 0.0.0.0"
     line: "ListenAddress 0.0.0.0"
@@ -104,7 +109,7 @@
 
 - name: disable password auth in ssh
   lineinfile:
-    path: /etc/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
     regexp: "^#?PasswordAuthentication yes|no"
     insertafter: "^#?PasswordAuthentication yes|no"
     line: "PasswordAuthentication no"

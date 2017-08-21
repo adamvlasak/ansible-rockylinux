@@ -48,6 +48,7 @@
 - name: prepare pathogen directories
   file:
     path: "{{ item }}"
+    state: directory
     recurse: yes
   with_items:
     - /root/.vim/autoload
