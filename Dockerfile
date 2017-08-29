@@ -29,14 +29,13 @@ RUN apt-get update -y && \
 
 RUN pip install ansible
 
-RUN mkdir /run/sshd
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
-RUN echo "en_US.utf-8" > /etc/locales.gen && locale-gen
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locales.gen && locale-gen
 COPY files/id_rsa /root/.ssh/id_rsa
 COPY files/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY files/id_rsa.pub /root/.ssh/authorized_keys
-RUN chmod 0700 /root/.ssh
-RUN chmod 0600 /root/.ssh/*
+RUN chmod 0700 /root/.ssh && chmod 0600 /root/.ssh/*
+RUN mkdir /run/sshd
 
 COPY files/vars.sh /etc/profile.d/vars.sh
 

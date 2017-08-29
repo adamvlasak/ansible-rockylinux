@@ -4,16 +4,27 @@
 
 This project provisions your debian based OS for better user experience.
 
-## How to install ansible via pip
+## Creating machine (optional)
 
-    $ apt-get update
-    $ apt-get install curl wget vim git tig build-essential sudo python-virtualenv python-crypto python-setuptools python-dev libffi-dev libssl-dev
-    $ cd work-machine/
-    $ virtualenv .
-    $ . bin/activate
-    $ pip install ansible
+You need docker.
 
-## Provisioning
+To build image:
+
+    $ cd /path/to/work-machine
+    $ docker build --rm -t work:latest .
+
+To run machine:
+
+    $ cd /path/to/work-machine
+    $ docker-compose up -d
+
+You can try to connect via SSH like so:
+
+    $ ssh root@localhost
+
+And it should work.
+
+## Provisioning via ansible
 
     $ cd work-machine/
     $ cp vars/user.example vars.yml
@@ -22,9 +33,5 @@ This project provisions your debian based OS for better user experience.
 You must edit the file in vars/user.yml according to your needs! Then run playbook:
 
     $ make provision
-
-or
-
-    $ make provision-dockerized
 
 Done!
