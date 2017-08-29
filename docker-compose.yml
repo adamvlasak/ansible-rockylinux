@@ -1,0 +1,9 @@
+version: '3'
+services:
+  work:
+    image: "work:latest"
+    restart: unless-stopped
+    container_name: work
+    hostname: work
+    ports:
+      - "22:22"
