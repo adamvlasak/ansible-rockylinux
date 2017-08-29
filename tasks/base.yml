@@ -64,41 +64,6 @@
     dest: /etc/profile.d/ncurses_utf-8_fix.sh
     content: "export NCURSES_NO_UTF8_ACS=1\n"
 
-- name: install dnsmasq
-  apt:
-    name: dnsmasq
-    state: latest
-
-- name: configure dnsmasq
-  copy:
-    src: templates/dnsmasq.conf
-    dest: /etc/dnsmasq.conf
-  notify: dnsmasq
-
-- name: set resolv.conf nameserver to localhost
-  copy:
-    content: "nameserver=127.0.0.1\n"
-    dest: /etc/resolv.conf
-
-- name: restart dnsmasq
-  service:
-    name: dnsmasq
-    state: restarted
-
-- name: install fail2ban
-  apt:
-    name: fail2ban
-    state: latest
-
-- name: configure fail2ban
-  template:
-    src: templates/jail.local
-    dest: /etc/fail2ban/jail.local
-    owner: root
-    group: root
-    mode: 0644
-  notify: fail2ban
-
 - name: make sshd listen only on ipv4
   lineinfile:
     dest: /etc/ssh/sshd_config
