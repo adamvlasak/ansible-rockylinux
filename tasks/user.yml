@@ -35,6 +35,14 @@
   template:
     dest: /etc/profile.d/bashrc.sh
     src: templates/bashrc
+    mode: 0644
+  tags: user
+
+- name: setup environment variables
+  template:
+    dest: /etc/profile.d/vars.sh
+    src: files/vars.sh
+    mode: 0644
   tags: user
 
 - name: provision .vimrc
