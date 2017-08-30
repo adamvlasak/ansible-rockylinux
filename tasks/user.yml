@@ -1,3 +1,4 @@
+---
 - name: create group for intended user
   group:
     name: "{{ login }}"
@@ -43,6 +44,15 @@
   with_items:
     - /root/.vimrc
     - "/home/{{ login }}/.vimrc"
+  tags: user
+
+- name: provision tmux.conf
+  template:
+    dest: "{{ item }}"
+    src: templates/tmux.conf
+  with_items:
+    - /root/tmux.conf
+    - "/home/{{ login }}/tmux.conf"
   tags: user
 
 - name: prepare pathogen directories
