@@ -33,6 +33,8 @@ And it should work.
 
 ## Provisioning via ansible
 
+This step assumes you can SSH to your machine, you know its IP address and it runs debian. In the future centos support will be added (playbook uses apt).
+
     $ cd work-machine/
     $ make prepare
 
