@@ -39,6 +39,7 @@ RUN chmod 0700 /root/.ssh && chmod 0600 /root/.ssh/*
 RUN mkdir /run/sshd
 
 COPY files/vars.sh /etc/profile.d/vars.sh
+COPY files/setup.sh /root/setup.sh
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
