@@ -55,8 +55,11 @@
 
 - name: generate locales
   locale_gen:
-    name: en_US.UTF-8
+    name: "{{ item }}"
     state: present
+  with_items:
+    - en_US.UTF-8
+    - cs_CZ.UTF-8
 
 - name: setup correct time
   file:
@@ -64,11 +67,6 @@
     dest: /etc/localtime
     force: yes
     state: link
-
-- name: set NCURSES_NO_UTF8_ACS=1
-  copy:
-    dest: /etc/profile.d/ncurses_utf-8_fix.sh
-    content: "export NCURSES_NO_UTF8_ACS=1\n"
 
 - name: make sshd listen only on ipv4
   lineinfile:
