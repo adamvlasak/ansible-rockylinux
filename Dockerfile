@@ -38,8 +38,9 @@ COPY files/id_rsa.pub /root/.ssh/authorized_keys
 RUN chmod 0700 /root/.ssh && chmod 0600 /root/.ssh/*
 RUN mkdir /run/sshd
 
-COPY files/vars.sh /etc/profile.d/vars.sh && chmod 0644 /etc/profile.d/vars.sh
-COPY files/setup.sh /root/setup.sh && chmod 0700 /root/setup.sh
+COPY files/vars.sh /etc/profile.d/vars.sh
+COPY files/setup.sh /root/setup.sh
+RUN chmod 0644 /etc/profile.d/vars.sh && chmod 0700 /root/setup.sh
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
