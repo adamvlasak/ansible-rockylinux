@@ -9,8 +9,8 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - atop
     - aptitude
+    - atop
     - bash-completion
     - build-essential
     - ca-certificates
@@ -18,9 +18,13 @@
     - dnsmasq
     - dnsutils
     - git
+    - glibc-doc
     - htop
     - iftop
     - jnettop
+    - man-db
+    - manpages
+    - manpages-dev
     - mc
     - mercurial
     - net-tools
@@ -40,6 +44,7 @@
     - tig
     - tmux
     - vim
+    - w3m
     - wget
 
 - name: install fpm package manager
