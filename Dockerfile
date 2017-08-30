@@ -12,6 +12,7 @@ RUN apt-get update -y && \
 		locales \
 		mc \
 		net-tools \
+		passwd \
 		python \
 		python-dev \
 		python-virtualenv \

@@ -1,7 +1,7 @@
 version: '3'
 services:
   work:
-    image: "work:latest"
+    image: "work:debian"
     restart: unless-stopped
     container_name: work
     hostname: work
