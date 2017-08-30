@@ -1,7 +1,6 @@
 ---
 - name: setup work machine
   hosts: all
-  become: true
 
   tasks:
     - include_vars: vars/user.yml
