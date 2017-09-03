@@ -43,6 +43,7 @@
     - subversion
     - tig
     - tmux
+    - traceroute
     - vim
     - w3m
     - wget
