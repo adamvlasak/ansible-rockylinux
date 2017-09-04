@@ -2,13 +2,13 @@
 
 ## Overview
 
-This project provisions your debian based OS for better user experience.
+This project provisions your Debian based OS for better user experience.
 
 ## Creating machine (optional)
 
 You need docker.
 
-To build debian image:
+To build Debian image:
 
     $ cd /path/to/work-machine
     $ docker build --rm -t work:debian .
@@ -26,7 +26,7 @@ And it should work.
 
 ## Provisioning via ansible
 
-This step assumes you can SSH to your machine, you know its IP address and it runs debian. In the future centos support will be added (playbook uses apt).
+This step assumes you can SSH to your machine, you know its IP address and it runs Debian.
 
     $ cd work-machine/
     $ make prepare
