@@ -13,17 +13,10 @@ To build debian image:
     $ cd /path/to/work-machine
     $ docker build --rm -t work:debian .
 
-To build centos image:
-
-    $ cd /path/to/work-machine
-    $ docker build --rm -t work:centos .
-
 To run machine:
 
     $ cd /path/to/work-machine
     $ docker-compose up -d
-
-Note: you can edit image in docker-compose.yml to run centos version
 
 You can try to connect via SSH like so to test it:
 
@@ -37,6 +30,7 @@ This step assumes you can SSH to your machine, you know its IP address and it ru
 
     $ cd work-machine/
     $ make prepare
+    $ cat ~/.ssh/id_rsa.pub # you will need it in user.yml
 
 You must edit the file in vars/user.yml according to your needs! Then run playbook:
 
