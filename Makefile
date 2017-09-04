@@ -1,9 +1,6 @@
 build-debian:
 	docker build --rm --no-cache -t work:debian .
 
-build-centos:
-	docker build --rm --no-cache -t work:centos .
-
 prepare:
 	cp vars/user.example vars/user.yml
 	echo "[all]\nlocalhost ansible_user=root" > inventory
