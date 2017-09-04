@@ -41,10 +41,6 @@ docker-cleanup () {
   docker volume ls -qf dangling=true | xargs -r docker volume rm
 }
 
-eslint () {
-  docker run -ti --rm -v "${PWD}:/src:ro" markocelan/eslint "$@"
-}
-
 ansible () {
   docker run -ti --rm -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible "$@"
 }
