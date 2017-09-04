@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 RUN apt-get update -y && \
-	apt-get install -y \
+    apt-get install -y \
         apt-transport-https \
         build-essential \
         ca-certificates \
@@ -29,7 +29,7 @@ RUN apt-get update -y && \
         tmux \
         vim \
         wget && \
-	rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
     apt-key fingerprint 0EBFCD88 && \
@@ -39,7 +39,7 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
         stable" && \
     apt-get update -y && \
     apt-get install -y docker-ce && \
-	rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 RUN pip install ansible
 
