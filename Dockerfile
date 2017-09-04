@@ -2,30 +2,43 @@ FROM debian:stretch
 
 RUN apt-get update -y && \
 	apt-get install -y \
-		build-essential \
-		ca-certificates \
-		curl \
-		dos2unix \
-		git \
-		htop \
-		iftop \
-		locales \
-		mc \
-		net-tools \
-		passwd \
-		python \
-		python-dev \
-		python-virtualenv \
-		python-pip \
-		python3 \
-		python3-dev \
-		python3-virtualenv \
-		python3-pip \
-		ssh \
-		tig \
-		tmux \
-		vim \
-		wget && \
+        apt-transport-https \
+        build-essential \
+        ca-certificates \
+        curl \
+        dos2unix \
+        git \
+        gnupg2 \
+        htop \
+        iftop \
+        locales \
+        mc \
+        net-tools \
+        passwd \
+        python \
+        python-dev \
+        python-virtualenv \
+        python-pip \
+        python3 \
+        python3-dev \
+        python3-virtualenv \
+        python3-pip \
+        software-properties-common \
+        ssh \
+        tig \
+        tmux \
+        vim \
+        wget && \
+	rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
+    apt-key fingerprint 0EBFCD88 && \
+    add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/debian \
+        $(lsb_release -cs) \
+        stable" && \
+    apt-get update -y && \
+    apt-get install -y docker-ce && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN pip install ansible
