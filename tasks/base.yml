@@ -1,8 +1,20 @@
 ---
+- name: set machine hostname
+  hostname:
+    name: "{{ hostname }}"
+- name: enable epel repo
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+- rpm_key:
+    state: present
+    key: http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
 - name: install necessary packages
   yum:
     name: "{{ item }}"
     state: latest
+    update_cache: yes
   with_items:
     - atop
     - bash-completion
@@ -36,12 +48,6 @@
     - vim
     - w3m
     - wget
-
-- name: install fpm package manager
-  gem:
-    name: fpm
-    state: latest
-    user_install: no
 
 - name: setup correct time
   file:
