@@ -42,9 +42,9 @@ docker-cleanup () {
 }
 
 ansible () {
-  docker run -ti --rm -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible "$@"
+  docker run -ti --rm -v "${SSH_AUTH_SOCK}:/ssh-agent" --env SSH_AUTH_SOCK=/ssh-agent -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible "$@"
 }
 
 ansible-playbook () {
-  docker run -ti --rm -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible-playbook "$@"
+  docker run -ti --rm -v "${SSH_AUTH_SOCK}:/ssh-agent" --env SSH_AUTH_SOCK=/ssh-agent -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible-playbook "$@"
 }
