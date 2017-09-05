@@ -2,16 +2,16 @@
 
 ## Overview
 
-This project provisions your Debian based OS for better user experience.
+This project provisions your CentOS based OS for better user experience.
 
 ## Creating machine (optional)
 
 You need docker.
 
-To build Debian image:
+To build CentOS image:
 
     $ cd /path/to/work-machine
-    $ docker build --rm -t work:debian .
+    $ docker build --rm -t work:centos .
 
 To run machine:
 
@@ -26,7 +26,7 @@ And it should work.
 
 ## Provisioning via ansible
 
-This step assumes you can SSH to your machine, you know its IP address and it runs Debian.
+This step assumes you can SSH to your machine, you know its IP address and it runs CentOS.
 
     $ cd work-machine/
     $ make prepare
