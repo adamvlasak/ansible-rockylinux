@@ -1,6 +1,6 @@
 ---
 - name: install dnsmasq
-  apt:
+  yum:
     name: dnsmasq
     state: latest
 
@@ -16,7 +16,7 @@
     state: restarted
 
 - name: install fail2ban
-  apt:
+  yum:
     name: fail2ban
     state: latest
 
