@@ -17,6 +17,7 @@
     update_cache: yes
   with_items:
     - atop
+    - ansible
     - bash-completion
     - bash-completion-extras
     - ca-certificates

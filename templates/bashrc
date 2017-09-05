@@ -41,15 +41,3 @@ docker-cleanup () {
   echo "Deleting dangling images"
   docker volume ls -qf dangling=true | xargs -r docker volume rm
 }
-
-ansible () {
-  docker run -ti --rm -v "${SSH_AUTH_SOCK}:/ssh-agent" --env SSH_AUTH_SOCK=/ssh-agent -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible "$@"
-}
-
-ansible-galaxy () {
-  docker run -ti --rm -v "${SSH_AUTH_SOCK}:/ssh-agent" --env SSH_AUTH_SOCK=/ssh-agent -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible-galaxy "$@"
-}
-
-ansible-playbook () {
-  docker run -ti --rm -v "${SSH_AUTH_SOCK}:/ssh-agent" --env SSH_AUTH_SOCK=/ssh-agent -v "${PWD}:/var/ansible-playbooks" ansible:latest ansible-playbook "$@"
-}
