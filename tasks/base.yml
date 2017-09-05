@@ -36,8 +36,10 @@
     - python
     - python-devel
     - python-virtualenv
+    - python2-pip
     - python34
     - python34-devel
+    - python34-pip
     - ruby
     - ruby-devel
     - rubygems
