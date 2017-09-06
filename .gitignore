@@ -2,3 +2,4 @@
 .gitconfig
 *.retry
 vars/user.yml
+files/id_rsa*
