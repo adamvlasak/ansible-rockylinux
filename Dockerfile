@@ -8,7 +8,6 @@ RUN yum install -y \
 		docker \
 		git \
 		make \
-		mc \
 		net-tools \
 		openssh-server \
 		passwd \
@@ -20,18 +19,14 @@ RUN yum install -y \
 		krb5-devel \
 		krb5-libs \
 		krb5-workstation \
-		tig \
-		tmux \
 		vim \
 		wget && \
 	yum clean all
 
-# RUN pip install "pywinrm>=0.2.2"
 RUN pip install https://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm
 RUN pip install kerberos
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
-# RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8
 
 COPY files/id_rsa /root/.ssh/id_rsa
 COPY files/id_rsa.pub /root/.ssh/id_rsa.pub
