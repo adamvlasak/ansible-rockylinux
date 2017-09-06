@@ -24,7 +24,7 @@
 
 - name: provision .gitconfig
   copy:
-    content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}\n[push]\n\tdefault = simple\n"
+    content: "[user]\n\tname = {{ username }}\n\temail = {{ email }}\n[push]\n\tdefault = simple\n[color]\n\tui = true"
     dest: "{{ item }}"
   with_items:
     - /root/.gitconfig
