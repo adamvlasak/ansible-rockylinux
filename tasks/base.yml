@@ -49,6 +49,7 @@
     insertafter: "^#?ListenAddress 0.0.0.0"
     line: "ListenAddress 0.0.0.0"
   notify: ssh
+  when: servercentric
 
 - name: disable password auth in ssh
   lineinfile:
@@ -57,3 +58,4 @@
     insertafter: "^#?PasswordAuthentication yes|no"
     line: "PasswordAuthentication no"
   notify: ssh
+  when: servercentric
