@@ -1,0 +1,97 @@
+---
+- name: install additional tools
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - ansible
+    - curl
+    - mc
+    - mercurial
+    - ShellCheck
+    - subversion
+    - tig
+    - tmux
+    - vim
+    - w3m
+    - wget
+    - git
+    - python34-devel
+    - python34-pip
+    - ruby-devel
+    - python-devel
+    - python-virtualenv
+    - python2-pip
+
+- name: provision our own eslint wrapper
+  copy:
+    src: files/eslint
+    dest: /usr/local/bin/eslint
+    mode: 0777
+    owner: root
+    group: root
+
+- name: prepare pathogen directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - /root/.vim/autoload
+    - /root/.vim/bundle
+    - /home/{{ login }}/.vim/autoload
+    - /home/{{ login }}/.vim/bundle
+
+- name: download pathogen
+  get_url:
+    url: https://tpo.pe/pathogen.vim
+    dest: "{{ item  }}"
+  with_items:
+    - /root/.vim/autoload/pathogen.vim
+    - /home/{{ login }}/.vim/autoload/pathogen.vim
+
+- name: put syntastic into bundle directory
+  git:
+    repo: https://github.com/vim-syntastic/syntastic.git
+    dest: "{{ item }}"
+    update: yes
+    depth: 1
+  with_items:
+    - /root/.vim/bundle/syntastic.git
+    - /home/{{ login }}/.vim/bundle/syntastic.git
+
+- name: put ansible syntax colors into bundle directory
+  git:
+    repo: https://github.com/pearofducks/ansible-vim
+    dest: "{{ item }}"
+    update: yes
+  with_items:
+    - /root/.vim/bundle/ansible-vim
+    - /home/{{ login }}/.vim/bundle/ansible-vim
+
+- name: put typescript syntax colors into bundle directory
+  git:
+    repo: https://github.com/leafgarland/typescript-vim
+    dest: "{{ item }}"
+    update: yes
+  with_items:
+    - /root/.vim/bundle/typescript-vim
+    - /home/{{ login }}/.vim/bundle/typescript-vim
+
+- name: put javascript syntax colors into bundle directory
+  git:
+    repo: https://github.com/pangloss/vim-javascript
+    dest: "{{ item }}"
+    update: yes
+  with_items:
+    - /root/.vim/bundle/vim-javascript
+    - /home/{{ login }}/.vim/bundle/vim-javascript
+
+- name: provision .vimrc
+  template:
+    dest: "{{ item }}"
+    src: templates/vimrc
+  with_items:
+    - /root/.vimrc
+    - "/home/{{ login }}/.vimrc"
