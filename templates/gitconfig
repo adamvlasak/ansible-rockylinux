@@ -1,0 +1,12 @@
+[user]
+	name = {{ username }}
+	email = {{ email }}
+[push]
+	default = simple
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
