@@ -1,0 +1,7 @@
+---
+- name: setup lxc work machine
+  hosts: localhost
+
+  tasks:
+    - include: tasks/lxc.yml
+    - include: tasks/lxc-containers.yml

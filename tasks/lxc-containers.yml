@@ -1,0 +1,15 @@
+---
+- name: define lxc machine for centos 7 work-machine
+  lxc_container:
+    name: centos7-work-machine
+    container_log: true
+    template: centos
+    state: started
+    template_options: --release 7
+- name: define lxc machine for debian 9 work-machine
+  lxc_container:
+    name: debian9-work-machine
+    container_log: true
+    template: debian
+    state: started
+    template_options: --release stretch

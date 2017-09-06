@@ -1,0 +1,30 @@
+---
+- yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - bridge-utils
+    - gcc
+    - libcap
+    - libcap-devel
+    - libcgroup
+    - libvirt
+    - lxc
+    - lxc-devel
+    - lxc-extra
+    - lxc-templates
+    - debootstrap
+
+- pip:
+    name: lxc-python2
+
+- service:
+    name: libvirtd
+    state: started
+
+- lineinfile:
+    line: lxc.kmsg = 0
+    dest: "{{ item }}"
+  with_items: 
+    - /usr/share/lxc/config/centos.common.conf
+    - /usr/share/lxc/config/debian.common.conf
