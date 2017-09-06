@@ -2,6 +2,7 @@
 - name: set machine hostname
   hostname:
     name: "{{ hostname }}"
+  when: hostname is defined
 - name: enable epel repo
   yum_repository:
     name: epel
