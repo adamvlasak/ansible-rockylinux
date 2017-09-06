@@ -6,7 +6,7 @@
   service:
     name: dnsmasq
     state: reloaded
-- name: sshd
+- name: ssh
   service:
     name: sshd
     state: reloaded

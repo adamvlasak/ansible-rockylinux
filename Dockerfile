@@ -1,30 +1,28 @@
 FROM library/centos:7
 
-RUN yum update -y; yum clean all
-RUN yum install -y epel-release
+RUN yum update -y; yum install -y epel-release; yum clean all
 RUN yum install -y \
 		ansible \
 		curl \
 		docker \
+		gcc \
 		git \
+		krb5-devel \
+		krb5-libs \
+		krb5-workstation \
 		make \
 		net-tools \
 		openssh-server \
 		passwd \
 		python \
 		python-devel \
-		python-virtualenv \
 		python-pip \
-		gcc \
-		krb5-devel \
-		krb5-libs \
-		krb5-workstation \
+		python-virtualenv \
 		vim \
 		wget && \
 	yum clean all
 
-RUN pip install https://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm
-RUN pip install kerberos
+RUN pip install https://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm; pip install kerberos
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
 
