@@ -10,6 +10,7 @@ RUN yum install -y \
 		krb5-devel \
 		krb5-libs \
 		krb5-workstation \
+		lxc-devel \
 		make \
 		net-tools \
 		openssh-server \
@@ -22,7 +23,7 @@ RUN yum install -y \
 		wget && \
 	yum clean all
 
-RUN pip install https://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm; pip install kerberos
+RUN pip install https://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm; pip install kerberos; pip install lxc-python2
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
 
