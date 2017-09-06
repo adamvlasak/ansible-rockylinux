@@ -4,3 +4,4 @@
 vars/user.yml
 files/id_rsa*
 sftp-config.json
+inventory
