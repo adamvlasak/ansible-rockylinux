@@ -4,6 +4,7 @@
     state: latest
   with_items:
     - bridge-utils
+    - debootstrap
     - gcc
     - libcap
     - libcap-devel
@@ -13,14 +14,17 @@
     - lxc-devel
     - lxc-extra
     - lxc-templates
-    - debootstrap
 
 - pip:
     name: lxc-python2
 
 - service:
-    name: libvirtd
+    name: "{{ item }}"
     state: started
+  with_items:
+    - lxc
+    - libvirtd
+  when: servercentric
 
 - lineinfile:
     line: lxc.kmsg = 0
