@@ -5,7 +5,7 @@
   tasks:
     - include_vars: vars/user.yml
     - include: tasks/base.yml
-    - include: tasks/tools.yml
     - include: tasks/user.yml
+    - include: tasks/tools.yml
   handlers:
     - include: handlers/handlers.yml
