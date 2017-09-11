@@ -6,6 +6,6 @@ services:
     container_name: work
     hostname: work
     ports:
-      - "22:22"
+      - "2222:22"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
