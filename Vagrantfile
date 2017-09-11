@@ -15,6 +15,7 @@ Vagrant.configure("2") do |config|
             ansible \
             bash-completion \
             bash-completion-extra \
+            bind-utils \
             curl \
             git \
             htop \
