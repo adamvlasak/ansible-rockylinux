@@ -12,7 +12,7 @@ This project provisions your CentOS based OS for better user experience.
 
 You can try to connect via SSH like so to test it:
 
-```$ ssh root@localhost```
+```$ ssh root@localhost -p 2222```
 
 And it should work.
 
