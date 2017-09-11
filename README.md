@@ -6,17 +6,9 @@ This project provisions your CentOS based OS for better user experience.
 
 ## Creating machine (optional)
 
-You need docker.
+You need docker. To run machine use:
 
-To build CentOS image:
-
-    $ cd /path/to/work-machine
-    $ docker build --rm -t work:centos .
-
-To run machine:
-
-    $ cd /path/to/work-machine
-    $ docker-compose up -d
+    $ docker-compose up -d --build
 
 You can try to connect via SSH like so to test it:
 
