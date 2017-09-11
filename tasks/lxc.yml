@@ -25,6 +25,14 @@
 - lineinfile:
     line: lxc.kmsg = 0
     dest: "{{ item }}"
-  with_items: 
+  with_items:
     - /usr/share/lxc/config/centos.common.conf
     - /usr/share/lxc/config/debian.common.conf
+
+- name: provision key-helper
+  copy:
+    src: files/key-helper.sh
+    dest: /usr/local/sbin/lxc-key-helper
+    owner: root
+    group: root
+    mode: 0700
