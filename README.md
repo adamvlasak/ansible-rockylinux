@@ -8,11 +8,11 @@ This project provisions your CentOS based OS for better user experience.
 
 - you need docker
 
-	$ docker-compose up -d --build
+```$ docker-compose up -d --build```
 
 You can try to connect via SSH like so to test it:
 
-    $ ssh root@localhost
+```$ ssh root@localhost```
 
 And it should work.
 
