@@ -3,5 +3,6 @@
   hosts: localhost
 
   tasks:
+    - include_vars: vars/user.yml
     - include: tasks/lxc.yml
     - include: tasks/lxc-containers.yml
