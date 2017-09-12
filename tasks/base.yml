@@ -29,6 +29,7 @@
     - man
     - man-pages
     - net-tools
+    - ntp
     - python
     - python34
     - ruby
@@ -56,4 +57,11 @@
     regexp: "^#?PasswordAuthentication yes|no"
     insertafter: "^#?PasswordAuthentication yes|no"
     line: "PasswordAuthentication no"
-  notify: ssh
+    notify: ssh
+
+- name: service ntp is running
+  service:
+    name: nptd
+    state: started
+    enabled: true
+  when: servercentric
