@@ -61,7 +61,7 @@
 
 - name: service ntp is running
   service:
-    name: nptd
+    name: ntpd
     state: started
     enabled: true
   when: servercentric
