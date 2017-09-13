@@ -57,7 +57,7 @@
     regexp: "^#?PasswordAuthentication yes|no"
     insertafter: "^#?PasswordAuthentication yes|no"
     line: "PasswordAuthentication no"
-    notify: ssh
+  notify: ssh
 
 - name: service ntp is running
   service:
