@@ -19,22 +19,7 @@
     state: latest
     update_cache: yes
   with_items:
-    - bash-completion
-    - bash-completion-extras
-    - bind-utils
-    - ca-certificates
-    - glibc-common
-    - htop
-    - iftop
-    - man
-    - man-pages
-    - net-tools
-    - ntp
-    - python
-    - python34
-    - ruby
-    - rubygems
-    - traceroute
+    "{{ base_packages }} "
 
 - name: setup correct time
   file:

@@ -5,24 +5,7 @@
     state: latest
     update_cache: yes
   with_items:
-    - ansible
-    - curl
-    - mc
-    - mercurial
-    - ShellCheck
-    - subversion
-    - tig
-    - tmux
-    - vim
-    - w3m
-    - wget
-    - git
-    - python34-devel
-    - python34-pip
-    - ruby-devel
-    - python-devel
-    - python-virtualenv
-    - python2-pip
+    "{{ tools_packages }} "
 
 - name: provision our own eslint wrapper
   copy:

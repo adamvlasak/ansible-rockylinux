@@ -1,0 +1,19 @@
+---
+base_packages:
+  - bash-completion
+  - bash-completion-extras
+  - bind-utils
+  - ca-certificates
+  - deltarpm
+  - glibc-common
+  - htop
+  - iftop
+  - man
+  - man-pages
+  - net-tools
+  - ntp
+  - python
+  - python34
+  - ruby
+  - rubygems
+  - traceroute
