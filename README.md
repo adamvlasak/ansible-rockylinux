@@ -30,12 +30,12 @@ RUN yum install -y \
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
 
-COPY roles/user/files/id_rsa /root/.ssh/id_rsa
-COPY roles/user/files/id_rsa.pub /root/.ssh/id_rsa.pub
-COPY roles/user/files/id_rsa.pub /root/.ssh/authorized_keys
+ADD roles/user/files/id_rsa /root/.ssh/id_rsa
+ADD roles/user/files/id_rsa.pub /root/.ssh/id_rsa.pub
+ADD roles/user/files/id_rsa.pub /root/.ssh/authorized_keys
 
-COPY roles/user/templates/vars.sh /etc/profile.d/vars.sh
-COPY roles/tools/files/setup.sh /root/setup.sh
+ADD roles/user/templates/vars.sh /etc/profile.d/vars.sh
+ADD roles/tools/files/setup.sh /root/setup.sh
 
 RUN chmod 0700 /root/.ssh; chmod 0600 /root/.ssh/*
 RUN mkdir /var/run/sshd
