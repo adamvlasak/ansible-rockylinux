@@ -3,5 +3,5 @@
     name: sshd
     state: reloaded
   when: servercentric
-- name: yum clean all
+- name: yum clean
   command: yum clean all
