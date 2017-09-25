@@ -1,7 +1,7 @@
 .vagrant/
 .gitconfig
 *.retry
-vars/user.yml
-files/id_rsa*
+roles/user/vars/main.yml
+roles/user/files/id_rsa*
 sftp-config.json
 inventory
