@@ -2,12 +2,8 @@
 - name: setup work machine
   hosts: all
 
-  tasks:
-    - include_vars: vars/base.yml
-    - include_vars: vars/tools.yml
-    - include_vars: vars/user.yml
-    - include: tasks/base.yml
-    - include: tasks/user.yml
-    - include: tasks/tools.yml
-  handlers:
-    - include: handlers/handlers.yml
+  roles:
+    - common
+    - user
+    - tools
+    - security

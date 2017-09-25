@@ -4,6 +4,7 @@ RUN yum update -y; yum install -y epel-release; yum clean all
 RUN yum install -y \
 		ansible \
 		curl \
+		deltarpm \
 		bind-utils \
 		docker \
 		git \
@@ -17,12 +18,12 @@ RUN yum install -y \
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
 
-COPY files/id_rsa /root/.ssh/id_rsa
-COPY files/id_rsa.pub /root/.ssh/id_rsa.pub
-COPY files/id_rsa.pub /root/.ssh/authorized_keys
+COPY roles/user/files/id_rsa /root/.ssh/id_rsa
+COPY roles/user/files/id_rsa.pub /root/.ssh/id_rsa.pub
+COPY roles/user/files/id_rsa.pub /root/.ssh/authorized_keys
 
-COPY files/vars.sh /etc/profile.d/vars.sh
-COPY files/setup.sh /root/setup.sh
+COPY roles/user/templates/vars.sh /etc/profile.d/vars.sh
+COPY roles/tools/files/setup.sh /root/setup.sh
 
 RUN chmod 0700 /root/.ssh; chmod 0600 /root/.ssh/*
 RUN mkdir /var/run/sshd

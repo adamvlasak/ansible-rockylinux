@@ -9,7 +9,7 @@
 
 - name: provision our own eslint wrapper
   copy:
-    src: files/eslint
+    src: eslint
     dest: /usr/local/bin/eslint
     mode: 0777
     owner: root
@@ -74,7 +74,7 @@
 - name: provision .vimrc
   template:
     dest: "{{ item }}"
-    src: templates/vimrc
+    src: vimrc
   with_items:
     - /root/.vimrc
     - "/home/{{ login }}/.vimrc"

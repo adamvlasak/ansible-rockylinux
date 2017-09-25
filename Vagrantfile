@@ -15,6 +15,7 @@ Vagrant.configure("2") do |config|
             ansible \
             bind-utils \
             curl \
+            deltarpm \
             git \
             net-tools \
             traceroute \

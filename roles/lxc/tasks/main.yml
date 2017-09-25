@@ -35,7 +35,7 @@
 
 - name: provision key-helper
   copy:
-    src: files/key-helper.sh
+    src: key-helper.sh
     dest: /usr/local/sbin/lxc-key-helper
     owner: root
     group: root
