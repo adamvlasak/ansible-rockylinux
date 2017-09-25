@@ -38,15 +38,11 @@ Vagrant.configure("2") do |config|
         yum install -y epel-release
         yum install -y \
             ansible \
-            bash-completion \
-            bash-completion-extra \
+            bind-utils \
             curl \
+            deltarpm \
             git \
-            htop \
-            iftop \
             net-tools \
-            tig \
-            tmux \
             traceroute \
             vim \
             wget
