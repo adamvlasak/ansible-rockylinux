@@ -4,26 +4,16 @@ RUN yum update -y; yum install -y epel-release; yum clean all
 RUN yum install -y \
 		ansible \
 		curl \
+		bind-utils \
 		docker \
-		gcc \
 		git \
-		krb5-devel \
-		krb5-libs \
-		krb5-workstation \
-		lxc-devel \
-		make \
 		net-tools \
 		openssh-server \
 		passwd \
 		python \
-		python-devel \
-		python-pip \
-		python-virtualenv \
 		vim \
 		wget && \
 	yum clean all
-
-RUN pip install https://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm; pip install kerberos; pip install lxc-python2
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
 
