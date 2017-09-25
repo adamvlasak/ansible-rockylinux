@@ -2,8 +2,8 @@ build-centos:
 	docker build --rm --no-cache -t work:centos .
 
 prepare:
-	cp vars/user.example vars/user.yml
-	echo "[all]\nlocalhost ansible_user=root" > inventory
+	cp roles/user/vars/main.yml.example roles/user/vars/main.yml
+	echo -e "[all]\nlocalhost ansible_user=root" > inventory
 
 provision:
 	ansible-playbook -i inventory playbook.yml
