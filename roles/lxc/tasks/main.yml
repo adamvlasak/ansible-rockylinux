@@ -1,7 +1,11 @@
 ---
 - yum:
+    name: epel-release
+
+- yum:
     name: "{{ item }}"
     state: latest
+    update_cache: yes
   with_items:
     - bridge-utils
     - debootstrap

@@ -1,9 +1,4 @@
 ---
-- name: set machine hostname
-  hostname:
-    name: "{{ hostname }}"
-  when: hostname is defined
-
 - name: enable epel repo
   yum:
     name: epel-release
@@ -17,6 +12,11 @@
   with_items:
     "{{ base_packages }} "
   notify: yum clean
+
+- name: set machine hostname
+  hostname:
+    name: "{{ hostname }}"
+  when: hostname is defined
 
 - name: setup correct time
   file:
