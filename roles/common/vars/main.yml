@@ -16,4 +16,7 @@ base_packages:
   - python34
   - ruby
   - rubygems
+  - telnet
   - traceroute
+
+servercentric: no
