@@ -5,14 +5,8 @@
   when: hostname is defined
 
 - name: enable epel repo
-  yum_repository:
-    name: epel
-    description: EPEL YUM repo
-    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-  notify: yum clean
-- rpm_key:
-    state: present
-    key: http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+  yum:
+    name: epel-release
   notify: yum clean
 
 - name: install necessary packages
