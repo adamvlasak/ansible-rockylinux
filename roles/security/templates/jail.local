@@ -5,7 +5,6 @@ findtime = 604800
 backend = polling
 
 [ssh]
-
 enabled  = true
 port     = ssh
 filter   = sshd
@@ -13,7 +12,6 @@ logpath  = /var/log/auth.log
 maxretry = 3
 
 [ssh-ddos]
-
 enabled  = true
 port     = ssh
 filter   = sshd-ddos
