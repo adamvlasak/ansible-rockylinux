@@ -4,6 +4,7 @@ findtime = 604800
 bantime = 86400
 banaction = iptables-multiport
 backend = polling
+action = $(action_)s
 
 [ssh]
 enabled  = true
