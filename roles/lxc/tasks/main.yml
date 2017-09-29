@@ -44,3 +44,5 @@
     owner: root
     group: root
     mode: 0700
+
+- include: lxc-containers.yml

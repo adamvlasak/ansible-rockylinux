@@ -4,16 +4,22 @@ findtime = 604800
 bantime = 86400
 banaction = iptables-multiport
 backend = polling
-action = $(action_)s
+
+# The simplest action to take: ban only
+action_ = %(banaction)s[name=%(__name__)s, bantime="%(bantime)s", port="%(port)s", protocol="%(protocol)s", chain="%(chain)s"]
 
 [ssh]
 enabled  = true
 port     = ssh
 filter   = sshd
+logpath  = %(sshd_log)s
+backend  = %(sshd_backend)s
 maxretry = 3
 
 [ssh-ddos]
 enabled  = true
 port     = ssh
 filter   = sshd-ddos
+logpath  = %(sshd_log)s
+backend  = %(sshd_backend)s
 maxretry = 3
