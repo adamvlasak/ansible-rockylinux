@@ -1,0 +1,12 @@
+---
+- yum:
+    name: fail2ban
+    state: latest
+  when: servercentric
+
+- name: configure fail2ban
+  template:
+    src: jail.local
+    dest: /etc/fail2ban/jail.local
+  notify: fail2ban
+  when: servercentric
