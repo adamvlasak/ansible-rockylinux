@@ -47,5 +47,3 @@
     state: started
     enabled: true
   when: servercentric
-
-- include: lxc-containers.yml
