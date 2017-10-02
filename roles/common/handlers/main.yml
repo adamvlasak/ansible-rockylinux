@@ -1,6 +1,8 @@
 - name: ssh
-  service:
+  systemd:
     name: sshd
+    enabled: yes
+    daemon_reload: yes
     state: reloaded
   when: servercentric
 - name: yum clean
