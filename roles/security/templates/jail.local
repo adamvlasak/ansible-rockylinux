@@ -1,5 +1,5 @@
 [DEFAULT]
-ignoreip = 127.0.0.1/8 93.181.106.34
+ignoreip = 127.0.0.1/8 {{ ignored_ips }}
 findtime = 604800
 bantime = 86400
 banaction = iptables-multiport
