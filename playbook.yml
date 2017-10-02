@@ -2,9 +2,6 @@
 - name: setup work machine
   hosts: all
 
-  vars:
-    servercentric: yes
-
   roles:
     - common
     - user
