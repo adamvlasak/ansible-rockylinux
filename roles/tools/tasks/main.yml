@@ -88,6 +88,6 @@
 
 - name: symlink terraform to /usr/local/bin
   file:
-    src: /opt/terraform
+    src: /opt/terraform/terraform
     dest: /usr/local/bin/terraform
     state: link
