@@ -5,5 +5,11 @@
     daemon_reload: yes
     state: reloaded
   when: servercentric
+- name: ntp
+  service:
+    name: ntpd
+    state: started
+    enabled: true
+  when: servercentric
 - name: yum clean
   command: yum clean all

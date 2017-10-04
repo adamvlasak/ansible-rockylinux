@@ -24,6 +24,7 @@
     dest: /etc/localtime
     force: yes
     state: link
+  notify: ntp
 
 - name: make sshd listen only on ipv4
   lineinfile:
@@ -40,10 +41,3 @@
     insertafter: "^#?PasswordAuthentication yes|no"
     line: "PasswordAuthentication no"
   notify: ssh
-
-- name: service ntp is running
-  service:
-    name: ntpd
-    state: started
-    enabled: true
-  when: servercentric
