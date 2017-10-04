@@ -7,13 +7,7 @@
   with_items:
     "{{ tools_packages }} "
 
-- name: provision our own eslint wrapper
-  copy:
-    src: eslint
-    dest: /usr/local/bin/eslint
-    mode: 0777
-    owner: root
-    group: root
+# vim plugins
 
 - name: prepare pathogen directories
   file:
@@ -78,3 +72,21 @@
   with_items:
     - /root/.vimrc
     - "/home/{{ login }}/.vimrc"
+
+# terraform
+
+- name: prepare terraform directory
+  file:
+    path: /opt/terraform
+    state: directory
+
+- name: install terraform package
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip
+    dest: /opt/terraform
+    remote_src: yes
+
+- name: symlink terraform to /usr/local/bin
+  file:
+    src: /opt/terraform
+    dest: /usr/local/bin/terraform
