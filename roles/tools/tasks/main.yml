@@ -90,3 +90,4 @@
   file:
     src: /opt/terraform
     dest: /usr/local/bin/terraform
+    state: link
