@@ -11,6 +11,7 @@ base_packages:
   - iproute
   - man
   - man-pages
+  - ncdu
   - net-tools
   - ntp
   - python

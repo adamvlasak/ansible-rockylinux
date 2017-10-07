@@ -1,7 +1,9 @@
 ---
 - yum:
-    name: fail2ban
+    name: "{{ item }}"
     state: latest
+  with_items:
+    "{{ packages }}"
   when: servercentric
 
 - name: configure fail2ban
