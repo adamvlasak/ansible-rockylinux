@@ -1,10 +1,10 @@
 version: '3'
 services:
-  work:
+  work-machine:
     build: .
     restart: unless-stopped
-    container_name: work
-    hostname: work
+    container_name: work-machine
+    hostname: work-machine
     ports:
       - "2222:22"
     volumes:
