@@ -12,3 +12,10 @@
     dest: /etc/fail2ban/jail.local
   notify: fail2ban
   when: servercentric
+
+- name: configure dnsmasq
+  template:
+    src: dnsmasq.conf
+    dest: /etc/dnsmasq.d/dnsmasq.conf
+  notify: dnsmasq
+  when: servercentric
