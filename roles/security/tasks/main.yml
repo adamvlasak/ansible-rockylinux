@@ -16,6 +16,6 @@
 - name: configure dnsmasq
   template:
     src: dnsmasq.conf
-    dest: /etc/dnsmasq.d/dnsmasq.conf
+    dest: /etc/dnsmasq.conf
   notify: dnsmasq
   when: servercentric
