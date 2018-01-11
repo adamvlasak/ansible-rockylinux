@@ -1,7 +1,7 @@
 version: '3'
 services:
   work-machine:
-    build: .
+    image: work-machine:latest
     restart: unless-stopped
     container_name: work-machine
     hostname: work-machine
