@@ -2,8 +2,9 @@ docker-image:
 	docker build --rm --no-cache -t work-machine:centos .
 
 prepare:
-	cp roles/user/vars/main.yml.example roles/user/vars/main.yml
-	echo -e "[all]\nlocalhost ansible_user=root" > inventory
+	mkdir -p roles/user/vars
+	cp -f roles/user/defaults/main.yml roles/user/vars/main.yml
+	echo -e "[all]\nlocalhost ansible_connection=local" > inventory
 
 test:
 	ansible-playbook -i inventory playbook.yml --check --diff
