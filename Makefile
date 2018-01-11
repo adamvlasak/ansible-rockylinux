@@ -4,6 +4,8 @@ docker-image:
 prepare:
 	mkdir -p roles/user/vars
 	cp -f roles/user/defaults/main.yml roles/user/vars/main.yml
+	mkdir -p roles/security/vars
+	touch roles/security/vars/main.yml
 	echo -e "[all]\nlocalhost ansible_connection=local" > inventory
 
 test:
