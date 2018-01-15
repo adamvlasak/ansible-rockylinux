@@ -1,6 +1,4 @@
 ---
-servercentric: no
 packages:
-  - dnsmasq
   - fail2ban
   - privoxy

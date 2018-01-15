@@ -1,9 +1,12 @@
 ---
 - name: setup work machine
   hosts: all
+  vars:
+    - servercentric: yes
 
   roles:
     - common
+    - network
     - user
     - tools
     - security

@@ -3,4 +3,3 @@ email: "john.doe@example.org"
 username: "John Doe"
 login: "johndoe"
 ssh_pubkey: "foobar"
-servercentric: no

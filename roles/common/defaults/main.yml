@@ -23,5 +23,3 @@ base_packages:
   - telnet
   - traceroute
   - unzip
-
-servercentric: no
