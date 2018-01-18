@@ -14,7 +14,6 @@ base_packages:
   - ncdu
   - net-tools
   - ntp
-  - openvpn
   - python
   - python34
   - ruby

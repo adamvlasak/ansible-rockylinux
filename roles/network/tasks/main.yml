@@ -24,6 +24,11 @@
   notify: dnsmasq
   when: servercentric
 
+- name: start dnsmasq
+  service:
+    name: dnsmasq
+    state: started
+
 - name: setup nameserver to 127.0.0.1
   copy:
     content: "nameserver 127.0.0.1\n"
