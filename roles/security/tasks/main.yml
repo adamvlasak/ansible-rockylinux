@@ -12,3 +12,9 @@
     dest: /etc/fail2ban/jail.local
   notify: fail2ban
   when: servercentric
+
+- name: setup SELinux
+  selinux:
+    state: "{{ selinux_policy }}"
+  tags:
+    - common

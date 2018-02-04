@@ -3,3 +3,5 @@ packages:
   - fail2ban
   - privoxy
   - openvpn
+
+selinux_policy: disabled
