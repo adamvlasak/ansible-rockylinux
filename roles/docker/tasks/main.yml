@@ -48,6 +48,8 @@
 
 - name: add yum repository for docker
   command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo
   when: ansible_distribution == "CentOS"
 
 - rpm_key:
