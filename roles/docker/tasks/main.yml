@@ -1,0 +1,78 @@
+---
+- name: install required packages for docker
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg2
+    - software-properties-common
+  tags: docker
+  when: ansible_distribution == "Debian"
+
+- name: docker apt-key present
+  apt_key:
+    url: "https://download.docker.com/linux/{{ ansible_lsb.id|lower }}/gpg"
+    state: present
+  tags: docker
+  when: ansible_distribution == "Debian"
+
+- name: docker repo present
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/{{ ansible_lsb.id|lower }} {{ ansible_lsb.codename|lower }} stable"
+    filename: "docker"
+    state: present
+  tags: docker
+  when: ansible_distribution == "Debian"
+
+- name: install docker {{ docker_version_debian }}
+  apt:
+    name: "{{ docker_package_name }}={{ docker_version_debian }}"
+    state: present
+    force: yes
+    update_cache: yes
+  notify: docker
+  tags: docker
+  when: ansible_distribution == "Debian"
+
+- name: install required packages for docker
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+  when: ansible_distribution == "CentOS"
+
+- name: add yum repository for docker
+  command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  when: ansible_distribution == "CentOS"
+
+- rpm_key:
+    key: https://download.docker.com/linux/centos/gpg
+  when: ansible_distribution == "CentOS"
+
+- name: install docker version {{ docker_version_centos }}
+  yum:
+    name: "{{ docker_package_name }}-{{ docker_version_centos }}"
+    state: present
+    update_cache: yes
+  notify: docker
+  when: ansible_distribution == "CentOS"
+
+- name: docker-compose present
+  pip:
+    name: docker-compose
+    version: "{{ docker_compose_version }}"
+  tags: docker
+
+- name: docker-machine present
+  get_url:
+    url: "https://github.com/docker/machine/releases/download/v{{ docker_machine_version }}/{{ docker_machine_package_name }}"
+    dest: /usr/local/bin/docker-machine
+    mode: 0770
+    owner: root
+    group: root
+  tags: docker
