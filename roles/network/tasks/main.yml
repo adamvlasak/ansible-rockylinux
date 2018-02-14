@@ -17,6 +17,11 @@
     - net.ipv6.conf.default.disable_ipv6
   when: servercentric
 
+- name: configure /etc/hosts
+  template:
+    src: hosts
+    dest: /etc/hosts
+
 - name: configure dnsmasq
   template:
     src: dnsmasq.conf
