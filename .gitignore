@@ -6,4 +6,5 @@ roles/user/vars/main.yml
 roles/security/vars/main.yml
 roles/user/files/id_rsa*
 sftp-config.json
-inventory
+hosts
+.vault
