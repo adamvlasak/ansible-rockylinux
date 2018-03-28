@@ -14,8 +14,8 @@ prepare:
 	echo "Do not forget to create hosts file!"
 
 test:
-	ansible-playbook -i inventory playbook.yml --check --diff
+	ansible-playbook playbook.yml --check --diff
 
 provision:
-	ansible-playbook -i inventory playbook.yml --diff
+	ansible-playbook playbook.yml --diff
 
