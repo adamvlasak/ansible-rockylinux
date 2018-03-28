@@ -11,7 +11,7 @@ prepare:
 	touch roles/security/vars/main.yml
 	mkdir -p roles/user/files/
 	cp ~/.ssh/id_rsa* roles/user/files/
-	echo -e "[all]\nlocalhost ansible_connection=local" > inventory
+	echo "Do not forget to create hosts file!"
 
 test:
 	ansible-playbook -i inventory playbook.yml --check --diff
