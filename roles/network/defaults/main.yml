@@ -1,3 +1,4 @@
 ---
+servercentric: yes
 packages:
   - dnsmasq

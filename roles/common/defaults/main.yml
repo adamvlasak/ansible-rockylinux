@@ -1,4 +1,5 @@
 ---
+servercentric: yes
 base_packages:
   - bash-completion
   - bash-completion-extras
@@ -18,6 +19,7 @@ base_packages:
   - python34
   - ruby
   - rubygems
+  - sysstat
   - tar
   - telnet
   - traceroute

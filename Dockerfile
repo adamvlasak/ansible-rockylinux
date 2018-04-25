@@ -2,18 +2,21 @@ FROM library/centos:7
 
 RUN yum update -y; yum install -y epel-release; yum clean all
 RUN yum install -y \
-		ansible \
-		curl \
-		deltarpm \
-		bind-utils \
-		git \
-		net-tools \
-		openssh-server \
-		passwd \
-		python \
-		vim \
-		wget && \
-	yum clean all
+        ansible \
+        curl \
+        deltarpm \
+        bind-utils \
+        git \
+        htop \
+        iftop \
+        net-tools \
+        openssh-server \
+        passwd \
+        python \
+        sysstat \
+        vim \
+        wget && \
+    yum clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
 

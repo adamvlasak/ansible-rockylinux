@@ -1,4 +1,6 @@
 ---
+servercentric: yes
+
 packages:
   - fail2ban
   - privoxy
