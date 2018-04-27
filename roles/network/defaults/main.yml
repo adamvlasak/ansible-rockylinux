@@ -1,4 +1,6 @@
 ---
+ipv6: yes
 servercentric: yes
+public_dns: yes
 packages:
   - dnsmasq
