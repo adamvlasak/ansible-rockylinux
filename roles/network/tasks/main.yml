@@ -39,6 +39,15 @@
   notify: dnsmasq
   when: servercentric
 
+- name: download hosts.ads file
+  get_url:
+    url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+    dest: /etc/hosts.ads
+    owner: root
+    group: root
+    mode: 0644
+  when: adblock
+
 - name: start dnsmasq
   service:
     name: dnsmasq
