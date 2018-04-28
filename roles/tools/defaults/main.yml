@@ -10,8 +10,5 @@ tools_packages:
   - w3m
   - wget
   - git
-  - python-devel
-  - python-virtualenv
-  - python2-pip
 
 terraform_version: 0.10.7
