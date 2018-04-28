@@ -12,6 +12,7 @@ base_packages:
   - iproute
   - man
   - man-pages
+  - mc
   - ncdu
   - net-tools
   - ntp
@@ -23,4 +24,5 @@ base_packages:
   - tar
   - telnet
   - traceroute
+  - tree
   - unzip
