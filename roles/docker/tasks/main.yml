@@ -46,14 +46,6 @@
     - lvm2
   when: ansible_distribution == "CentOS"
 
-- name: remove obsolete docker packages
-  yum:
-    name: "{{ item }}"
-    state: absent
-  with_items:
-    - "{{ absent_packages }}"
-  when: ansible_distribution == "CentOS"
-
 - name: add yum repository for docker
   command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   args:
@@ -69,7 +61,9 @@
     name: "{{ docker_package_name }}-{{ docker_version_centos }}"
     state: present
     update_cache: yes
-  notify: docker
+  notify:
+    - docker
+    - versionlock docker
   when: ansible_distribution == "CentOS"
 
 - name: docker-compose present
