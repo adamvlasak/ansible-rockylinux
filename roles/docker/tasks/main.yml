@@ -44,6 +44,7 @@
     - yum-utils
     - device-mapper-persistent-data
     - lvm2
+    - python2-pip
   when: ansible_distribution == "CentOS"
 
 - name: add yum repository for docker
