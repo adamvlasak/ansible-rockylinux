@@ -39,6 +39,12 @@
   notify: dnsmasq
   when: servercentric
 
+- name: start dnsmasq daemon
+  service:
+    name: dnsmasq
+    state: started
+    enabled: yes
+
 - name: download hosts.ads file
   get_url:
     url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
