@@ -67,6 +67,12 @@
     - versionlock docker
   when: ansible_distribution == "CentOS"
 
+- name: start docker daemon
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
 - name: docker-compose present
   pip:
     name: docker-compose

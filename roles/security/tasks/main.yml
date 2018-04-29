@@ -13,6 +13,13 @@
   notify: fail2ban
   when: servercentric
 
+- name: start fail2ban
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes
+  when: servercentric
+
 - name: setup SELinux
   selinux:
     state: "{{ selinux_policy }}"
