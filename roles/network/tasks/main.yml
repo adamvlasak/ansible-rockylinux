@@ -5,7 +5,7 @@
     state: latest
   with_items:
     "{{ packages }}"
-  when: servercentric
+  when: ansible_distribution == "CentOS" and servercentric
     
 - name: disable ipv6
   sysctl:
