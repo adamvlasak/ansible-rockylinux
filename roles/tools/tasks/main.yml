@@ -4,6 +4,7 @@
     name: "{{ item }}"
     state: latest
     update_cache: yes
+  when: ansible_distribution == "CentOS"
   with_items:
     "{{ tools_packages }} "
 
@@ -72,22 +73,3 @@
   with_items:
     - /root/.vimrc
     - "/home/{{ login }}/.vimrc"
-
-# terraform
-
-- name: prepare terraform directory
-  file:
-    path: /opt/terraform
-    state: directory
-
-- name: install terraform package
-  unarchive:
-    src: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
-    dest: /opt/terraform
-    remote_src: yes
-
-- name: symlink terraform to /usr/local/bin
-  file:
-    src: /opt/terraform/terraform
-    dest: /usr/local/bin/terraform
-    state: link

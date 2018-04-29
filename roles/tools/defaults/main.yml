@@ -10,5 +10,3 @@ tools_packages:
   - w3m
   - wget
   - git
-
-terraform_version: 0.10.7
