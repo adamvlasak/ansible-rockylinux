@@ -2,7 +2,7 @@
 ipv6: yes
 servercentric: yes
 
-public_dns: yes
+public_dns: no
 
 nameservers:
   - 1.1.1.1
