@@ -18,7 +18,6 @@ RUN yum install -y \
         curl \
         deltarpm \
         bind-utils \
-        docker \
         git \
         net-tools \
         openssh-server \
