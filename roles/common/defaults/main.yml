@@ -22,3 +22,4 @@ base_packages:
   - traceroute
   - tree
   - unzip
+  - yum-plugin-versionlock

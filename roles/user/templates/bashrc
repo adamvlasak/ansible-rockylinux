@@ -34,10 +34,3 @@ extract () {
       echo "'$1' is not a valid file!"
   fi
 }
-
-docker-cleanup () {
-  echo "Deleting all stopped containers"
-  docker ps -a -q | xargs -r docker rm
-  echo "Deleting dangling images"
-  docker volume ls -qf dangling=true | xargs -r docker volume rm
-}
