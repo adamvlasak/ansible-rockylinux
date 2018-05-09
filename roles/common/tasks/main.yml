@@ -18,7 +18,7 @@
 - name: set machine hostname
   hostname:
     name: "{{ hostname }}"
-  when: hostname is defined
+  when: hostname is defined and ansible_virtualization_type != "docker"
 
 - name: setup correct time
   file:
