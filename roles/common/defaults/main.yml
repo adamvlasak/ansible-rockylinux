@@ -1,5 +1,4 @@
 ---
-servercentric: yes
 base_packages:
   - bash-completion
   - bash-completion-extras

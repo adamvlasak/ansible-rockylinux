@@ -1,14 +1,11 @@
 ---
 ipv6: yes
-servercentric: yes
-
 public_dns: no
+adblock: yes
 
 nameservers:
   - 1.1.1.1
   - 1.0.0.1
-
-adblock: yes
 
 packages:
   - dnsmasq

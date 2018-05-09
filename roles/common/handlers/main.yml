@@ -1,15 +1,16 @@
 - name: ssh
   systemd:
     name: sshd
-    enabled: yes
     daemon_reload: yes
     state: reloaded
-  when: servercentric
+    enabled: yes
+
 - name: ntp
   service:
     name: ntpd
     state: started
-    enabled: true
-  when: servercentric
+    enabled: yes
+
 - name: yum clean
   command: yum clean all
+  warn: no

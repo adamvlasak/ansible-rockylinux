@@ -1,9 +1,7 @@
 ---
-servercentric: yes
+selinux_policy: disabled
 
 packages:
   - fail2ban
   - privoxy
   - openvpn
-
-selinux_policy: disabled
