@@ -31,6 +31,7 @@
   template:
     src: hosts
     dest: /etc/hosts
+  when: ansible_virtualization_type != "docker"
 
 - name: configure dnsmasq
   template:
