@@ -13,4 +13,5 @@
 
 - name: yum clean
   command: yum clean all
-  warn: no
+  args:
+    warn: no
