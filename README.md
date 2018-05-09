@@ -18,6 +18,7 @@ $ docker-compose ps
 $ docker inspect <ID> # grab IP and add connection to inventory
 $ ssh root@<IP> # password here is docker
 $ make provision
+```
 
 You can try to connect via SSH like so to test it:
 
