@@ -25,3 +25,4 @@
     state: "{{ selinux_policy }}"
   tags:
     - common
+  when: ansible_virtualization_type != "docker"
