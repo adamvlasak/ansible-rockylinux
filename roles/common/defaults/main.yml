@@ -8,6 +8,7 @@ base_packages:
   - glibc-common
   - htop
   - iftop
+  - iotop
   - iproute
   - man
   - man-pages
