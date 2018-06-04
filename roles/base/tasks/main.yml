@@ -1,4 +1,12 @@
 ---
+- name: remove repos we don't need
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ absent_repos }}"
+  when: yum_cleanup
+
 - name: enable epel repo
   yum:
     name: epel-release

@@ -72,6 +72,7 @@
     name: docker
     state: started
     enabled: yes
+  when: ansible_virtualization_type != "docker"
 
 - name: docker-compose present
   pip:

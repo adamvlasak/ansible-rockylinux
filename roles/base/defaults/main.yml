@@ -1,4 +1,12 @@
 ---
+yum_cleanup: yes
+absent_repos:
+  - /etc/yum.repos.d/CentOS-CR.repo
+  - /etc/yum.repos.d/CentOS-Debuginfo.repo
+  - /etc/yum.repos.d/CentOS-fasttrack.repo
+  - /etc/yum.repos.d/CentOS-Media.repo
+  - /etc/yum.repos.d/CentOS-Sources.repo
+  - /etc/yum.repos.d/CentOS-Vault.repo
 base_packages:
   - bash-completion
   - bash-completion-extras

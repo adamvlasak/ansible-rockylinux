@@ -4,6 +4,11 @@ docker-run: docker-image
 docker-image:
 	docker build --rm -t work-machine:latest .
 
+clean:
+	docker-compose down
+
+recreate: clean docker-run
+
 prepare:
 	mkdir -p roles/user/vars
 	cp -f roles/user/defaults/main.yml roles/user/vars/main.yml
