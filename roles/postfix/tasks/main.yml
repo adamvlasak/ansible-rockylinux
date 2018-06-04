@@ -1,0 +1,23 @@
+---
+- name: install postfix
+  yum:
+    name: postfix
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: configure postfix
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart postfix
+  with_items:
+    - { "src": "main.cf.j2", "dest": "/etc/postfix/main.cf.j2" }
+
+- name: start postfix
+  service:
+    name: postfix
+    state: started
+    enabled: yes
