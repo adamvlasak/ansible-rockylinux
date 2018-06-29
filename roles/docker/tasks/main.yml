@@ -88,3 +88,25 @@
     owner: root
     group: root
   tags: docker
+
+- name: provision kubernetes repo
+  yum_repository:
+    name: kubernetes
+    description: kubernetes
+    baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+
+- name: install kubectl
+  yum:
+    name: kubectl
+    state: latest
+
+- name: install minicube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-linux-amd64
+    dest: /usr/local/sbin/minikube
+    mode: 0777
+    owner: root
+    group: root
