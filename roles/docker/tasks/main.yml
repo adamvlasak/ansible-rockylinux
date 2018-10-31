@@ -1,33 +1,5 @@
 ---
 - name: install required packages for docker
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - gnupg2
-    - software-properties-common
-  tags: docker
-  when: ansible_distribution == "Debian"
-
-- name: docker apt-key present
-  apt_key:
-    url: "https://download.docker.com/linux/{{ ansible_lsb.id|lower }}/gpg"
-    state: present
-  tags: docker
-  when: ansible_distribution == "Debian"
-
-- name: docker repo present
-  apt_repository:
-    repo: "deb https://download.docker.com/linux/{{ ansible_lsb.id|lower }} {{ ansible_lsb.codename|lower }} stable"
-    filename: "docker"
-    state: present
-  tags: docker
-  when: ansible_distribution == "Debian"
-
-- name: install required packages for docker
   yum:
     name: "{{ item }}"
   with_items:
@@ -35,17 +7,14 @@
     - device-mapper-persistent-data
     - lvm2
     - python2-pip
-  when: ansible_distribution == "CentOS"
 
 - name: add yum repository for docker
   command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   args:
     creates: /etc/yum.repos.d/docker-ce.repo
-  when: ansible_distribution == "CentOS"
 
 - rpm_key:
     key: https://download.docker.com/linux/centos/gpg
-  when: ansible_distribution == "CentOS"
 
 - name: install docker version {{ docker_version_centos }}
   yum:
@@ -55,7 +24,6 @@
   notify:
     - docker
     - versionlock docker
-  when: ansible_distribution == "CentOS"
 
 - name: start docker daemon
   service:

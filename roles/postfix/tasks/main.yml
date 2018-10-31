@@ -3,7 +3,6 @@
   yum:
     name: postfix
     state: latest
-  when: ansible_distribution == "CentOS"
 
 - name: configure postfix
   template:

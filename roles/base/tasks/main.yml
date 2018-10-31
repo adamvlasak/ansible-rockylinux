@@ -10,7 +10,6 @@
 - name: enable epel repo
   yum:
     name: epel-release
-  when: ansible_distribution == "CentOS"
   notify: yum clean
 
 - name: install necessary packages
@@ -20,7 +19,6 @@
     update_cache: yes
   with_items:
     "{{ base_packages }} "
-  when: ansible_distribution == "CentOS"
   notify: yum clean
 
 - name: set machine hostname

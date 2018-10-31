@@ -4,7 +4,6 @@
     name: "{{ item }}"
     state: latest
     update_cache: yes
-  when: ansible_distribution == "CentOS"
   with_items:
     "{{ tools_packages }} "
 
