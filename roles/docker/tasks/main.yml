@@ -27,16 +27,6 @@
   tags: docker
   when: ansible_distribution == "Debian"
 
-- name: install docker {{ docker_version_debian }}
-  apt:
-    name: "{{ docker_package_name }}={{ docker_version_debian }}"
-    state: present
-    force: yes
-    update_cache: yes
-  notify: docker
-  tags: docker
-  when: ansible_distribution == "Debian"
-
 - name: install required packages for docker
   yum:
     name: "{{ item }}"
