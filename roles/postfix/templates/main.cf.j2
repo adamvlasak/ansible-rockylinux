@@ -1,5 +1,5 @@
+myhostname = {{ postfix_myhostname }}
 myorigin = $mydomain
-mynetworks = 127.0.0.0/8 172.20.128.0.0/16
-relay_domains =
-# Optional: forward all non-local mail to mailhost
-#relayhost = $mydomain
+relayhost = $mydomain
+inet_interfaces = loopback-only
+mydestination =
