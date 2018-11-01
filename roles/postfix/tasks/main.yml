@@ -12,7 +12,7 @@
     group: root
     mode: 0644
   notify: restart postfix
-  with_items:
+  loop:
     - { "src": "main.cf.j2", "dest": "/etc/postfix/main.cf.j2" }
 
 - name: start postfix

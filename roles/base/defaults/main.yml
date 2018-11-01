@@ -7,7 +7,7 @@ absent_repos:
   - /etc/yum.repos.d/CentOS-Media.repo
   - /etc/yum.repos.d/CentOS-Sources.repo
   - /etc/yum.repos.d/CentOS-Vault.repo
-base_packages:
+packages:
   - bash-completion
   - bash-completion-extras
   - bind-utils

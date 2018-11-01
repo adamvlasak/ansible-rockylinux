@@ -1,9 +1,7 @@
 ---
 - yum:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: latest
-  with_items:
-    "{{ packages }}"
 
 - name: configure fail2ban
   template:

@@ -3,7 +3,7 @@
   file:
     path: "{{ item }}"
     state: absent
-  with_items:
+  loop:
     - "{{ absent_repos }}"
   when: yum_cleanup
 
@@ -14,11 +14,9 @@
 
 - name: install necessary packages
   yum:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: latest
     update_cache: yes
-  with_items:
-    "{{ base_packages }} "
   notify: yum clean
 
 - name: set machine hostname
@@ -34,12 +32,20 @@
     state: link
   notify: ntp
 
-- name: make sshd listen only on ipv4
+- name: make sshd listen on 0.0.0.0
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: "^#?ListenAddress 0.0.0.0"
     insertafter: "^#?ListenAddress 0.0.0.0"
     line: "ListenAddress 0.0.0.0"
+  notify: ssh
+
+- name: make sshd listen only on ipv4
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?AddressFamily any|inet"
+    insertafter: "^#?AddressFamily any|inet"
+    line: "AddressFamily inet"
   notify: ssh
 
 - name: disable password auth in ssh

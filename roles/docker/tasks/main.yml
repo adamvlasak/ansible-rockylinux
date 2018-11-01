@@ -2,7 +2,7 @@
 - name: install required packages for docker
   yum:
     name: "{{ item }}"
-  with_items:
+  loop:
     - yum-utils
     - device-mapper-persistent-data
     - lvm2

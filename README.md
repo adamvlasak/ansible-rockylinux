@@ -3,6 +3,7 @@
 ## Overview
 
 This project provisions your CentOS based OS for better user experience.
+Optimized for ansible 2.7+
 
 ## Provisioning via ansible
 

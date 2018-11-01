@@ -1,11 +1,9 @@
 ---
 - name: install additional tools
   yum:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: latest
     update_cache: yes
-  with_items:
-    "{{ tools_packages }} "
 
 # vim plugins
 
@@ -14,7 +12,7 @@
     path: "{{ item }}"
     state: directory
     recurse: yes
-  with_items:
+  loop:
     - /root/.vim/autoload
     - /root/.vim/bundle
     - /home/{{ login }}/.vim/autoload
@@ -24,7 +22,7 @@
   get_url:
     url: https://tpo.pe/pathogen.vim
     dest: "{{ item  }}"
-  with_items:
+  loop:
     - /root/.vim/autoload/pathogen.vim
     - /home/{{ login }}/.vim/autoload/pathogen.vim
 
@@ -34,7 +32,7 @@
     dest: "{{ item }}"
     update: yes
     depth: 1
-  with_items:
+  loop:
     - /root/.vim/bundle/syntastic.git
     - /home/{{ login }}/.vim/bundle/syntastic.git
 
@@ -43,7 +41,7 @@
     repo: https://github.com/pearofducks/ansible-vim
     dest: "{{ item }}"
     update: yes
-  with_items:
+  loop:
     - /root/.vim/bundle/ansible-vim
     - /home/{{ login }}/.vim/bundle/ansible-vim
 
@@ -52,7 +50,7 @@
     repo: https://github.com/leafgarland/typescript-vim
     dest: "{{ item }}"
     update: yes
-  with_items:
+  loop:
     - /root/.vim/bundle/typescript-vim
     - /home/{{ login }}/.vim/bundle/typescript-vim
 
@@ -61,7 +59,7 @@
     repo: https://github.com/pangloss/vim-javascript
     dest: "{{ item }}"
     update: yes
-  with_items:
+  loop:
     - /root/.vim/bundle/vim-javascript
     - /home/{{ login }}/.vim/bundle/vim-javascript
 
@@ -69,6 +67,6 @@
   template:
     dest: "{{ item }}"
     src: vimrc
-  with_items:
+  loop:
     - /root/.vimrc
     - "/home/{{ login }}/.vimrc"
