@@ -16,11 +16,10 @@
 - rpm_key:
     key: https://download.docker.com/linux/centos/gpg
 
-- name: install docker version {{ docker_version_centos }}
+- name: install docker-ce
   yum:
-    name: "{{ docker_package_name }}-{{ docker_version_centos }}"
-    state: present
-    update_cache: yes
+    name: docker-ce
+    state: latest
   notify:
     - docker
     - versionlock docker
@@ -37,34 +36,3 @@
     name: docker-compose
     version: "{{ docker_compose_version }}"
   tags: docker
-
-- name: docker-machine present
-  get_url:
-    url: "https://github.com/docker/machine/releases/download/v{{ docker_machine_version }}/{{ docker_machine_package_name }}"
-    dest: /usr/local/bin/docker-machine
-    mode: 0770
-    owner: root
-    group: root
-  tags: docker
-
-- name: provision kubernetes repo
-  yum_repository:
-    name: kubernetes
-    description: kubernetes
-    baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
-    enabled: yes
-    gpgcheck: yes
-    gpgkey: "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
-
-- name: install kubectl
-  yum:
-    name: kubectl
-    state: latest
-
-- name: install minicube
-  get_url:
-    url: https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-linux-amd64
-    dest: /usr/local/sbin/minikube
-    mode: 0777
-    owner: root
-    group: root
