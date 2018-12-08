@@ -5,9 +5,3 @@
     enabled: yes
     daemon_reload: yes
     state: restarted
-
-- name: versionlock docker
-  command: yum versionlock "{{ docker_package_name }}-{{ docker_version_centos }}"
-  when: ansible_virtualization_type != "docker"
-  args:
-    warn: no

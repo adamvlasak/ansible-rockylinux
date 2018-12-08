@@ -22,7 +22,6 @@
     state: latest
   notify:
     - docker
-    - versionlock docker
 
 - name: start docker daemon
   service:
