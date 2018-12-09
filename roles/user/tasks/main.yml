@@ -7,7 +7,7 @@
 - name: create intended user
   user:
     name: "{{ login }}"
-    group: "{{ login }}"
+    groups: ["{{ login }}", "users", "wheel"]
     shell: /bin/bash
     home: "/home/{{ login }}"
   tags: user
