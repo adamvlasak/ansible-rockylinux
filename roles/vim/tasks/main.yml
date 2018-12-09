@@ -1,12 +1,4 @@
 ---
-- name: install additional tools
-  yum:
-    name: "{{ packages }}"
-    state: latest
-    update_cache: yes
-
-# vim plugins
-
 - name: prepare pathogen directories
   file:
     path: "{{ item }}"

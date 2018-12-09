@@ -1,5 +1,6 @@
 ---
 yum_cleanup: yes
+
 absent_repos:
   - /etc/yum.repos.d/CentOS-CR.repo
   - /etc/yum.repos.d/CentOS-Debuginfo.repo
@@ -7,12 +8,16 @@ absent_repos:
   - /etc/yum.repos.d/CentOS-Media.repo
   - /etc/yum.repos.d/CentOS-Sources.repo
   - /etc/yum.repos.d/CentOS-Vault.repo
+
 packages:
+  - ansible
   - bash-completion
   - bash-completion-extras
+  - curl
   - bind-utils
   - ca-certificates
   - deltarpm
+  - git
   - glibc-common
   - htop
   - iftop
@@ -20,14 +25,21 @@ packages:
   - iproute
   - man
   - man-pages
+  - mercurial
   - ncdu
   - net-tools
   - ntp
   - python
+  - ShellCheck
   - sysstat
   - tar
   - telnet
+  - tig
+  - tmux
   - traceroute
   - tree
   - unzip
+  - vim
+  - w3m
+  - wget
   - yum-plugin-versionlock
