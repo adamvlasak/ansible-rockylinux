@@ -1,5 +1,4 @@
 ---
-eth_uid: <uid>
 eth_device: eth0
 
 ipv4:
@@ -14,6 +13,12 @@ ipv6:
   gateway: <your ipv6 gateway>
 
 ignored_ips: <your isp address>
+
+vim_plugins:
+  - https://github.com/vim-syntastic/syntastic.git
+  - https://github.com/pearofducks/ansible-vim
+  - https://github.com/leafgarland/typescript-vim
+  - https://github.com/pangloss/vim-javascript
 
 postfix_myhostname: example.org
 

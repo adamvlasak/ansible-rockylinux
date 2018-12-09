@@ -18,42 +18,14 @@
     - /root/.vim/autoload/pathogen.vim
     - /home/{{ login }}/.vim/autoload/pathogen.vim
 
-- name: put syntastic into bundle directory
+- name: put plugins into bundle directory
   git:
-    repo: https://github.com/vim-syntastic/syntastic.git
-    dest: "{{ item }}"
+    repo: "{{ item }}"
+    dest: "/home/{{ login }}/.vim/bundle/{{ item.split('/')[4] }}"
     update: yes
     depth: 1
-  loop:
-    - /root/.vim/bundle/syntastic.git
-    - /home/{{ login }}/.vim/bundle/syntastic.git
-
-- name: put ansible syntax colors into bundle directory
-  git:
-    repo: https://github.com/pearofducks/ansible-vim
-    dest: "{{ item }}"
-    update: yes
-  loop:
-    - /root/.vim/bundle/ansible-vim
-    - /home/{{ login }}/.vim/bundle/ansible-vim
-
-- name: put typescript syntax colors into bundle directory
-  git:
-    repo: https://github.com/leafgarland/typescript-vim
-    dest: "{{ item }}"
-    update: yes
-  loop:
-    - /root/.vim/bundle/typescript-vim
-    - /home/{{ login }}/.vim/bundle/typescript-vim
-
-- name: put javascript syntax colors into bundle directory
-  git:
-    repo: https://github.com/pangloss/vim-javascript
-    dest: "{{ item }}"
-    update: yes
-  loop:
-    - /root/.vim/bundle/vim-javascript
-    - /home/{{ login }}/.vim/bundle/vim-javascript
+  when: vim_plugins is defined
+  loop: "{{ vim_plugins }}"
 
 - name: provision .vimrc
   template:
