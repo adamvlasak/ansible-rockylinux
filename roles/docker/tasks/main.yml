@@ -2,11 +2,7 @@
 - name: install required packages for docker
   yum:
     name: "{{ item }}"
-  loop:
-    - yum-utils
-    - device-mapper-persistent-data
-    - lvm2
-    - python2-pip
+  loop: "{{ packages }}"
 
 - name: add yum repository for docker
   command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
