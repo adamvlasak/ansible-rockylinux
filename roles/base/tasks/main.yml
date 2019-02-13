@@ -40,6 +40,15 @@
     line: "ListenAddress 0.0.0.0"
   notify: ssh
 
+- name: make sshd listen on all ipv6 addresses
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?ListenAddress ::"
+    insertafter: "^#?ListenAddress ::"
+    line: "ListenAddress ::"
+  notify: ssh
+  when: ipv6.enabled
+
 - name: make sshd listen only on ipv4
   lineinfile:
     dest: /etc/ssh/sshd_config
