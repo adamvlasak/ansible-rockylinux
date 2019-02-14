@@ -61,7 +61,7 @@
 
 - name: configure dnsmasq
   template:
-    src: dnsmasq.conf
+    src: dnsmasq.conf.j2
     dest: /etc/dnsmasq.conf
   notify: dnsmasq
 
