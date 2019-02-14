@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     container_name: work-machine
     hostname: work-machine
+    ports:
+      - "2222:22"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /var/run/docker.sock:/var/run/docker.sock

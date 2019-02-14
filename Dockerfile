@@ -1,6 +1,6 @@
 FROM centos/systemd
 
-RUN yum -y install \
+RUN yum -y install epel-release && yum -y install \
            openssh-server \
            openssh-clients \
            sudo \
