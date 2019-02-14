@@ -12,23 +12,43 @@
   loop:
     - net.ipv6.conf.all.disable_ipv6
     - net.ipv6.conf.default.disable_ipv6
+  notify: restart network
   when: not ipv6.enabled
 
 - name: enable ipv6
   sysctl:
     name: "{{ item }}"
     value: 0
+    sysctl_set: yes
     state: present
   loop:
     - net.ipv6.conf.all.disable_ipv6
     - net.ipv6.conf.default.disable_ipv6
+  notify: restart network
   when: ipv6.enabled
+
+- name: enable NETWORKING_IPV6
+  lineinfile:
+    regexp: "^#?NETWORKING_IPV6"
+    line: "NETWORKING_IPV6=yes"
+    path: /etc/sysconfig/network
+  notify: restart network
+  when: ipv6.enabled
+
+- name: enable NETWORKING_IPV6
+  lineinfile:
+    regexp: "^#?NETWORKING_IPV6"
+    line: "NETWORKING_IPV6=no"
+    path: /etc/sysconfig/network
+  notify: restart network
+  when: not ipv6.enabled
 
 - name: configure /etc/hosts
   template:
-    src: hosts
+    src: hosts.j2
     dest: /etc/hosts
-    when: ansible_virtualization_type != "docker"
+  notify: restart network
+  when: ansible_virtualization_type != "docker"
 
 - name: configure /etc/sysconfig/network-scripts
   template:
@@ -37,6 +57,7 @@
     owner: root
     group: root
     mode: 0644
+  notify: restart network
 
 - name: configure dnsmasq
   template:

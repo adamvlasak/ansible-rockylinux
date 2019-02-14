@@ -32,35 +32,8 @@
     state: link
   notify: ntp
 
-- name: make sshd listen on 0.0.0.0
-  lineinfile:
+- name: configure sshd
+  template:
+    src: sshd_config.j2
     dest: /etc/ssh/sshd_config
-    regexp: "^#?ListenAddress 0.0.0.0"
-    insertafter: "^#?ListenAddress 0.0.0.0"
-    line: "ListenAddress 0.0.0.0"
-  notify: ssh
-
-- name: make sshd listen on all ipv6 addresses
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: "^#?ListenAddress ::"
-    insertafter: "^#?ListenAddress ::"
-    line: "ListenAddress ::"
-  notify: ssh
-  when: ipv6.enabled
-
-- name: make sshd listen only on ipv4
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: "^#?AddressFamily any|inet"
-    insertafter: "^#?AddressFamily any|inet"
-    line: "AddressFamily inet"
-  notify: ssh
-
-- name: disable password auth in ssh
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: "^#?PasswordAuthentication (yes|no)"
-    insertafter: "^#PasswordAuthentication (yes|no)"
-    line: "PasswordAuthentication no"
   notify: ssh

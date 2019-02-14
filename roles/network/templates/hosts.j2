@@ -1,0 +1,5 @@
+127.0.0.1   localhost
+{% if ipv6.enabled == True %}
+::1         localhost ipv6-localhost ipv6-loopback
+{% endif %}
+{{ ansible_default_ipv4.address }} {{ inventory_hostname }}
