@@ -52,7 +52,7 @@
 
 - name: configure /etc/sysconfig/network-scripts
   template:
-    src: ifcfg
+    src: ifcfg.j2
     dest: /etc/sysconfig/network-scripts/ifcfg-eth0
     owner: root
     group: root
