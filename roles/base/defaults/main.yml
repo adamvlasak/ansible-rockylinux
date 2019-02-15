@@ -26,6 +26,7 @@ packages:
   - man
   - man-pages
   - mercurial
+  - mlocate
   - ncdu
   - net-tools
   - ntp
