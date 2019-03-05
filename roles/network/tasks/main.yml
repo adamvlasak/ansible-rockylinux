@@ -2,7 +2,7 @@
 - name: yum
   yum:
     name: "{{ packages }}"
-    state: latest
+    state: present
     
 - name: disable ipv6
   sysctl:

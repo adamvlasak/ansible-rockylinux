@@ -2,7 +2,7 @@
 - name: install postfix
   yum:
     name: postfix
-    state: latest
+    state: present
 
 - name: configure postfix
   template:

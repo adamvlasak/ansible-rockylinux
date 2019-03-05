@@ -15,7 +15,7 @@
 - name: install docker-ce
   yum:
     name: docker-ce
-    state: latest
+    state: present
   notify:
     - docker
 

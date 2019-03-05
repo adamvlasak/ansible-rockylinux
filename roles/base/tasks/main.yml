@@ -15,7 +15,7 @@
 - name: install necessary packages
   yum:
     name: "{{ packages }}"
-    state: latest
+    state: present
     update_cache: yes
   notify: yum clean
 
