@@ -4,8 +4,8 @@ RUN yum -y install epel-release && yum -y install \
            openssh-server \
            openssh-clients \
            sudo \
-           ansible; \
-           yum clean all; \
+           ansible \
+           yum clean all \
            systemctl enable sshd.service
 
 ADD roles/user/templates/vars.sh /etc/profile.d/vars.sh

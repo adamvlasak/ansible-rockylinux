@@ -40,4 +40,3 @@
   pip:
     name: docker-compose
     version: "{{ docker_compose_version }}"
-  tags: docker
