@@ -1,23 +1,13 @@
-docker-run: docker-image
-	docker-compose up -d
+docker.run:
+	docker-compose up -d --build
 
-docker-image:
-	docker build --rm -t work-machine:latest .
-
-clean:
+docker.stop:
 	docker-compose down
 
-recreate: clean docker-run
-
-prepare:
-	cp -f vars.example vars.yml
-	mkdir -p roles/user/files/
-	cp ~/.ssh/id_rsa* roles/user/files/
-	echo "Do not forget to create hosts file!"
+recreate: docker.stop docker.run
 
 test:
 	ansible-playbook playbook.yml --check --diff
 
 provision:
 	ansible-playbook playbook.yml --diff
-

@@ -14,10 +14,11 @@ $ yum install git vim ansible
 $ mkdir src && cd src
 $ git clone git@github.com:adamvlasak/work-machine.git
 $ cd work-machine/
-$ make prepare
+$ touch hosts
+$ cp vars.example vars.yml
 ```
 
-You must edit the file vars.yml according to your needs! Then run playbook:
+You must create two files: hosts and vars.yml in root of the project and set up according to your needs (see vars.example). Then run playbook:
 
 ```
 $ make provision

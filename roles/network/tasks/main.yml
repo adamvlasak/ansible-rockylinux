@@ -3,7 +3,7 @@
   yum:
     name: "{{ packages }}"
     state: present
-    
+
 - name: disable ipv6
   sysctl:
     name: "{{ item }}"
@@ -13,7 +13,9 @@
     - net.ipv6.conf.all.disable_ipv6
     - net.ipv6.conf.default.disable_ipv6
   notify: restart network
-  when: not ipv6.enabled
+  when:
+    - not ipv6.enabled
+    - ansible_virtualization_type != "docker"
 
 - name: enable ipv6
   sysctl:
@@ -25,7 +27,9 @@
     - net.ipv6.conf.all.disable_ipv6
     - net.ipv6.conf.default.disable_ipv6
   notify: restart network
-  when: ipv6.enabled
+  when:
+    - ipv6.enabled
+    - ansible_virtualization_type != "docker"
 
 - name: enable NETWORKING_IPV6
   lineinfile:
@@ -33,7 +37,9 @@
     line: "NETWORKING_IPV6=yes"
     path: /etc/sysconfig/network
   notify: restart network
-  when: ipv6.enabled
+  when:
+    - ipv6.enabled
+    - ansible_virtualization_type != "docker"
 
 - name: enable NETWORKING_IPV6
   lineinfile:
@@ -41,7 +47,9 @@
     line: "NETWORKING_IPV6=no"
     path: /etc/sysconfig/network
   notify: restart network
-  when: not ipv6.enabled
+  when:
+    - not ipv6.enabled
+    - ansible_virtualization_type != "docker"
 
 - name: configure /etc/hosts
   template:
@@ -58,6 +66,7 @@
     group: root
     mode: 0644
   notify: restart network
+  when: ansible_virtualization_type != "docker"
 
 - name: configure dnsmasq
   template:
@@ -80,10 +89,10 @@
     mode: 0644
   when: adblock
 
-- name: start dnsmasq
+- name: restart dnsmasq daemon
   service:
     name: dnsmasq
-    state: started
+    state: restarted
 
 - name: setup nameserver to 127.0.0.1
   copy:

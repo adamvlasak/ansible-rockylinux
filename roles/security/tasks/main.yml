@@ -41,3 +41,4 @@
     - { "name": "net.ipv4.conf.default.log_martians", "value": "1" }
     - { "name": "net.ipv6.conf.all.accept_redirects", "value": "0" }
     - { "name": "net.ipv6.conf.default.accept_redirects", "value": "0" }
+  when: ansible_virtualization_type != "docker"

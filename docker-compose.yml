@@ -1,7 +1,9 @@
 version: '3'
 services:
   work-machine:
-    image: work-machine:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     container_name: work-machine
     hostname: work-machine
