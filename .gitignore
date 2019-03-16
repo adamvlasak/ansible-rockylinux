@@ -1,10 +1,3 @@
-.vagrant/
-.gitconfig
 *.retry
-roles/common/vars/main.yml
-roles/user/vars/main.yml
-roles/security/vars/main.yml
-roles/user/files/id_rsa*
-sftp-config.json
 hosts
-.vault
+vars.yml
