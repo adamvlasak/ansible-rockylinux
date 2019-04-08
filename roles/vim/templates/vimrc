@@ -28,7 +28,7 @@ set nocompatible
 set backspace=2
 syntax on
 set fileencodings=utf-8,latin2
-filetype plugin indent on
+filetype plugin indent off
 set tabstop=4
 set shiftwidth=4
 set expandtab
