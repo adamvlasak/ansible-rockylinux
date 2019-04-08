@@ -19,6 +19,14 @@
   notify:
     - docker
 
+- name: setup /etc/docker directory
+  file:
+    path: /etc/docker
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: provision daemon.json
   template:
     src: daemon.json.j2
