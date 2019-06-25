@@ -5,7 +5,7 @@
     state: absent
   loop:
     - "{{ absent_repos }}"
-  when: yum_cleanup
+  when: yum_cleanup|bool
 
 - name: enable epel repo
   yum:
