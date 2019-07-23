@@ -24,7 +24,6 @@
     src: gitconfig
     dest: "{{ item }}"
   loop:
-    - /root/.gitconfig
     - "/home/{{ login }}/.gitconfig"
 
 - name: setup bashrc

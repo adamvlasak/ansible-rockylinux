@@ -5,8 +5,6 @@
     state: directory
     recurse: yes
   loop:
-    - /root/.vim/autoload
-    - /root/.vim/bundle
     - /home/{{ login }}/.vim/autoload
     - /home/{{ login }}/.vim/bundle
 
@@ -32,5 +30,4 @@
     dest: "{{ item }}"
     src: vimrc
   loop:
-    - /root/.vimrc
     - "/home/{{ login }}/.vimrc"
