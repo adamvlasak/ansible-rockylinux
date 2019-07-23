@@ -19,6 +19,7 @@ packages:
   - deltarpm
   - git
   - glibc-common
+  - golang
   - htop
   - iftop
   - iotop
