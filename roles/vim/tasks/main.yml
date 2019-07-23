@@ -4,6 +4,8 @@
     path: "{{ item }}"
     state: directory
     recurse: yes
+    owner: "{{ login }}"
+    group: "{{ login }}"
   loop:
     - /home/{{ login }}/.vim/autoload
     - /home/{{ login }}/.vim/bundle
@@ -12,6 +14,8 @@
   get_url:
     url: https://tpo.pe/pathogen.vim
     dest: "{{ item  }}"
+    owner: "{{ login }}"
+    group: "{{ login }}"
   loop:
     - /home/{{ login }}/.vim/autoload/pathogen.vim
 
@@ -24,9 +28,18 @@
   when: vim_plugins is defined
   loop: "{{ vim_plugins }}"
 
+- name: set correct permissions on vim plugins
+  file:
+    path: "/home/{{ login }}/.vim/bundle"
+    owner: "{{ login }}"
+    group: "{{ login }}"
+    recurse: yes
+
 - name: provision .vimrc
   template:
     dest: "{{ item }}"
     src: vimrc
+    owner: "{{ login }}"
+    group: "{{ login }}"
   loop:
     - "/home/{{ login }}/.vimrc"
