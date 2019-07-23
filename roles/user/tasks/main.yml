@@ -23,6 +23,8 @@
   template:
     src: gitconfig
     dest: "{{ item }}"
+    owner: "{{ login }}"
+    group: "{{ login }}"
   loop:
     - "/home/{{ login }}/.gitconfig"
 
@@ -42,6 +44,7 @@
   template:
     src: tmux.conf
     dest: "{{ item }}"
+    owner: "{{ login }}"
+    group: "{{ login }}"
   loop:
-    - /root/tmux.conf
     - "/home/{{ login }}/tmux.conf"
