@@ -1,3 +1,4 @@
+{% if item != "/root/.vimrc" %}
 execute pathogen#infect()
 
 set statusline+=%#warningmsg#
@@ -21,6 +22,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
+{% endif %}
 
 set number 
 set showmode

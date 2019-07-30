@@ -43,3 +43,4 @@
     group: "{{ login }}"
   loop:
     - "/home/{{ login }}/.vimrc"
+    - "/root/.vimrc"
