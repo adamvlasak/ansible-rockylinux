@@ -25,3 +25,13 @@ $ make provision
 ```
 
 Done!
+
+## CI
+
+```
+export ANSIBLE_FORCE_COLOR=true
+echo "adamvlasak.cz ansible_connection=local hostname=adamvlasak.cz" > ./hosts
+cp ./vars.example ./vars.yml
+sed -i 's/<your isp address>/127.0.0.1/' ./vars.yml
+make test
+```
