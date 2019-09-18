@@ -1,6 +1,6 @@
 ---
 public_dns: no
-adblock: yes
+adblock: no
 
 nameservers:
   - 1.1.1.1
