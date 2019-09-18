@@ -49,4 +49,4 @@
   pip:
     name: docker-compose
     version: "{{ docker_compose_version }}"
-  when: not in ansible_check_mode
+  when: not ansible_check_mode
