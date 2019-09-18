@@ -14,14 +14,7 @@
 # SELinux about this change.
 # semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
 #
-{% if ipv6.enabled == True %}
-ListenAddress 0.0.0.0
-ListenAddress ::
 AddressFamily any
-{% else %}
-ListenAddress 0.0.0.0
-AddressFamily inet
-{% endif %}
 Port 22
 
 HostKey /etc/ssh/ssh_host_rsa_key

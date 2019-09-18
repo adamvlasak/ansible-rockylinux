@@ -1,17 +1,4 @@
 ---
-eth_device: eth0
-
-ipv4:
-  device: eth0
-  address: <your ipv4 address>
-  gateway: <your ipv4 gateway>
-  mask: 255.255.255.0
-
-ipv6:
-  enabled: no|yes
-  address: <your ipv6 address>
-  gateway: <your ipv6 gateway>
-
 ignored_ips: <your isp address>
 
 vim_plugins:

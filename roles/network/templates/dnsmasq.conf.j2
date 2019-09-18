@@ -1,11 +1,4 @@
-{% if public_dns %}
-listen-address=127.0.0.1,{{ ansible_default_ipv4.address }}
-{% else %}
 listen-address=127.0.0.1
-{% endif %}
-{% if ipv6.enabled %}
-listen-address=::1
-{% endif %}
 bind-dynamic
 bogus-priv
 filterwin2k
