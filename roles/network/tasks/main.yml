@@ -31,6 +31,7 @@
     name: dnsmasq
     state: started
     enabled: yes
+  when: ansible_virtualization_type != "docker"
 
 - name: setup nameserver to 127.0.0.1
   copy:
