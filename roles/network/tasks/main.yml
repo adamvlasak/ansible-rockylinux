@@ -40,3 +40,21 @@
     group: root
     mode: 0644
   when: ansible_virtualization_type != "docker"
+
+- name: setup ufw default incoming policy
+  ufw:
+    policy: deny
+    direction: incoming
+  notify: reload ufw
+
+- name: setup ufw default outgoing policy
+  ufw:
+    policy: allow
+    direction: outgoing
+  notify: reload ufw
+
+- name: allow ssh in ufw
+  ufw:
+    rule: allow
+    name: ssh
+  notify: reload ufw
