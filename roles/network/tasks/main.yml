@@ -17,12 +17,6 @@
     dest: /etc/dnsmasq.conf
   notify: dnsmasq
 
-- name: start dnsmasq daemon
-  service:
-    name: dnsmasq
-    state: started
-    enabled: yes
-
 - name: download hosts.ads file
   get_url:
     url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
@@ -32,10 +26,11 @@
     mode: 0644
   when: adblock|bool
 
-- name: restart dnsmasq daemon
-  service:
+- name: start dnsmasq daemon
+  systemd:
     name: dnsmasq
-    state: restarted
+    state: started
+    enabled: yes
 
 - name: setup nameserver to 127.0.0.1
   copy:
