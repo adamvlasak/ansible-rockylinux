@@ -47,15 +47,18 @@
     policy: deny
     direction: incoming
   notify: reload ufw
+  when: ansible_virtualization_type != "docker"
 
 - name: setup ufw default outgoing policy
   ufw:
     policy: allow
     direction: outgoing
   notify: reload ufw
+  when: ansible_virtualization_type != "docker"
 
 - name: allow ssh in ufw
   ufw:
     rule: allow
     name: ssh
   notify: reload ufw
+  when: ansible_virtualization_type != "docker"
