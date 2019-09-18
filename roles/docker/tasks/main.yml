@@ -16,6 +16,7 @@
   yum:
     name: docker-ce
     state: present
+  when: ansible_virtualization_type != "docker"
   notify:
     - docker
 
