@@ -1,7 +1,7 @@
 {% if item != "/root/.vimrc" %}
 call plug#begin()
 {% for plugin in vim_plugins %}
-Plug '{{ plugin }}'
+Plug '{{ plugin.split('/')[3] }}/{{ plugin.split('/')[4] }}'
 {% endfor %}
 call plug#end()
 
