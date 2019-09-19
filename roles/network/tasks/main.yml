@@ -3,6 +3,8 @@
   yum:
     name: "{{ packages }}"
     state: present
+  tags:
+    - network
 
 - name: configure /etc/hosts
   template:
@@ -10,12 +12,16 @@
     dest: /etc/hosts
   notify: restart network
   when: ansible_virtualization_type != "docker"
+  tags:
+    - network
 
 - name: configure dnsmasq
   template:
     src: dnsmasq.conf.j2
     dest: /etc/dnsmasq.conf
   notify: dnsmasq
+  tags:
+    - network
 
 - name: download hosts.ads file
   get_url:
@@ -25,6 +31,8 @@
     group: root
     mode: 0644
   when: adblock|bool
+  tags:
+    - network
 
 - name: start dnsmasq daemon
   systemd:
@@ -32,6 +40,8 @@
     state: started
     enabled: yes
   when: ansible_virtualization_type != "docker"
+  tags:
+    - network
 
 - name: setup nameserver to 127.0.0.1
   copy:
@@ -41,6 +51,8 @@
     group: root
     mode: 0644
   when: ansible_virtualization_type != "docker"
+  tags:
+    - network
 
 - name: setup ufw default incoming policy
   ufw:
@@ -48,6 +60,8 @@
     direction: incoming
   notify: reload ufw
   when: ansible_virtualization_type != "docker"
+  tags:
+    - network
 
 - name: setup ufw default outgoing policy
   ufw:
@@ -55,6 +69,8 @@
     direction: outgoing
   notify: reload ufw
   when: ansible_virtualization_type != "docker"
+  tags:
+    - network
 
 - name: allow ssh in ufw
   ufw:
@@ -62,3 +78,5 @@
     name: ssh
   notify: reload ufw
   when: ansible_virtualization_type != "docker"
+  tags:
+    - network
