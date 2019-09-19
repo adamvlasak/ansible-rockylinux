@@ -6,6 +6,9 @@ vim_plugins:
   - https://github.com/pearofducks/ansible-vim
   - https://github.com/leafgarland/typescript-vim
   - https://github.com/pangloss/vim-javascript
+  - https://github.com/vim-airline/vim-airline
+  - https://github.com/junegunn/fzf
+  - https://github.com/junegunn/fzf.vim
 
 postfix_myhostname: example.org
 
