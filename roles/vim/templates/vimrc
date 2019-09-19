@@ -1,5 +1,9 @@
 {% if item != "/root/.vimrc" %}
-execute pathogen#infect()
+call plug#begin()
+{% for plugin in vim_plugins %}
+Plug '{{ plugin }}'
+{% endfor %}
+call plug#end()
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

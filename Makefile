@@ -11,3 +11,6 @@ test:
 
 provision:
 	ansible-playbook playbook.yml --diff
+
+provision.vim:
+	ansible-playbook playbook.yml -t vim --diff

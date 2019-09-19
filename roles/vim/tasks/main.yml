@@ -8,32 +8,40 @@
     group: "{{ login }}"
   loop:
     - /home/{{ login }}/.vim/autoload
-    - /home/{{ login }}/.vim/bundle
+    - /home/{{ login }}/.vim/plugged
+  tags:
+    - vim
 
-- name: download pathogen
+- name: install vim-plug
   get_url:
-    url: https://tpo.pe/pathogen.vim
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ item  }}"
     owner: "{{ login }}"
     group: "{{ login }}"
   loop:
-    - /home/{{ login }}/.vim/autoload/pathogen.vim
+    - /home/{{ login }}/.vim/autoload/plug.vim
+  tags:
+    - vim
 
-- name: put plugins into bundle directory
+- name: put plugins into plugged directory
   git:
     repo: "{{ item }}"
-    dest: "/home/{{ login }}/.vim/bundle/{{ item.split('/')[4] }}"
+    dest: "/home/{{ login }}/.vim/plugged/{{ item.split('/')[4] }}"
     update: yes
     depth: 1
   when: vim_plugins is defined
   loop: "{{ vim_plugins }}"
+  tags:
+    - vim
 
 - name: set correct permissions on vim plugins
   file:
-    path: "/home/{{ login }}/.vim/bundle"
+    path: "/home/{{ login }}/.vim/plugged"
     owner: "{{ login }}"
     group: "{{ login }}"
     recurse: yes
+  tags:
+    - vim
 
 - name: provision .vimrc
   template:
@@ -44,3 +52,5 @@
   loop:
     - "/home/{{ login }}/.vimrc"
     - "/root/.vimrc"
+  tags:
+    - vim
