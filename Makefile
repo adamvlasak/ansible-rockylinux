@@ -17,3 +17,6 @@ provision.vim:
 
 provision.network:
 	ansible-playbook playbook.yml -t network --diff
+
+provision.docker:
+	ansible-playbook playbook.yml -t docker --diff
