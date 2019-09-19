@@ -2,6 +2,8 @@
 - yum:
     name: "{{ packages }}"
     state: latest
+  tags:
+    - security
 
 - name: configure fail2ban
   template:
@@ -9,6 +11,8 @@
     dest: /etc/fail2ban/jail.local
   notify: fail2ban
   when: ignored_ips is defined
+  tags:
+    - security
 
 - name: start fail2ban
   service:
@@ -16,11 +20,15 @@
     state: started
     enabled: yes
   when: ignored_ips is defined
+  tags:
+    - security
 
 - name: setup SELinux
   selinux:
     state: "{{ selinux_policy }}"
   when: ansible_virtualization_type != "docker"
+  tags:
+    - security
 
 - name: harden through sysctl
   sysctl:
@@ -42,3 +50,5 @@
     - { "name": "net.ipv6.conf.all.accept_redirects", "value": "0" }
     - { "name": "net.ipv6.conf.default.accept_redirects", "value": "0" }
   when: ansible_virtualization_type != "docker"
+  tags:
+    - security

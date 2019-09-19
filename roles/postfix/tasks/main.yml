@@ -3,6 +3,8 @@
   yum:
     name: postfix
     state: present
+  tags:
+    - postfix
 
 - name: configure postfix
   template:
@@ -14,9 +16,13 @@
   notify: restart postfix
   loop:
     - { "src": "main.cf.j2", "dest": "/etc/postfix/main.cf" }
+  tags:
+    - postfix
 
 - name: start postfix
   service:
     name: postfix
     state: started
     enabled: yes
+  tags:
+    - postfix

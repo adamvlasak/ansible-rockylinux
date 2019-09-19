@@ -2,6 +2,8 @@
 - name: create group for intended user
   group:
     name: "{{ login }}"
+  tags:
+    - user
 
 - name: create intended user
   user:
@@ -9,6 +11,8 @@
     groups: ["{{ login }}", "users", "wheel"]
     shell: /bin/bash
     home: "/home/{{ login }}"
+  tags:
+    - user
 
 - name: setup authorized_keys for all intended users
   authorized_key:
@@ -18,6 +22,8 @@
   loop:
     - root
     - "{{ login }}"
+  tags:
+    - user
 
 - name: provision .gitconfig
   template:
@@ -27,18 +33,24 @@
     group: "{{ login }}"
   loop:
     - "/home/{{ login }}/.gitconfig"
+  tags:
+    - user
 
 - name: setup bashrc
   template:
     src: bashrc
     dest: /etc/profile.d/bashrc.sh
     mode: 0644
+  tags:
+    - user
 
 - name: setup environment variables
   template:
     src: vars.sh
     dest: /etc/profile.d/vars.sh
     mode: 0644
+  tags:
+    - user
 
 - name: provision tmux.conf
   template:
@@ -48,3 +60,5 @@
     group: "{{ login }}"
   loop:
     - "/home/{{ login }}/tmux.conf"
+  tags:
+    - user

@@ -6,11 +6,15 @@
   loop:
     - "{{ absent_repos }}"
   when: yum_cleanup|bool
+  tags:
+    - base
 
 - name: enable epel repo
   yum:
     name: epel-release
   notify: yum clean
+  tags:
+    - base
 
 - name: install necessary packages
   yum:
@@ -18,11 +22,15 @@
     state: present
     update_cache: yes
   notify: yum clean
+  tags:
+    - base
 
 - name: set machine hostname
   hostname:
     name: "{{ hostname }}"
   when: hostname is defined and ansible_virtualization_type != "docker"
+  tags:
+    - base
 
 - name: setup correct time
   file:
@@ -31,9 +39,13 @@
     force: yes
     state: link
   notify: ntp
+  tags:
+    - base
 
 - name: configure sshd
   template:
     src: sshd_config.j2
     dest: /etc/ssh/sshd_config
   notify: ssh
+  tags:
+    - base
