@@ -75,7 +75,8 @@
 - name: allow ssh in ufw
   ufw:
     rule: allow
-    name: ssh
+    proto: tcp
+    port: "22"
   notify: reload ufw
   when: ansible_virtualization_type != "docker"
   tags:
