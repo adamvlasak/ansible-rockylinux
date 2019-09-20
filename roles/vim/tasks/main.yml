@@ -18,6 +18,7 @@
     dest: "{{ item  }}"
     owner: "{{ login }}"
     group: "{{ login }}"
+  when: not ansible_check_mode
   loop:
     - /home/{{ login }}/.vim/autoload/plug.vim
   tags:
@@ -29,7 +30,7 @@
     dest: "/home/{{ login }}/.vim/plugged/{{ item.split('/')[4] }}"
     update: yes
     depth: 1
-  when: vim_plugins is defined
+  when: vim_plugins is defined and not ansible_check_mode
   loop: "{{ vim_plugins }}"
   tags:
     - vim
@@ -40,6 +41,7 @@
     owner: "{{ login }}"
     group: "{{ login }}"
     recurse: yes
+  when: not ansible_check_mode
   tags:
     - vim
 
