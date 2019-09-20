@@ -3,7 +3,7 @@
 if [ ${UID} == 0 ]; then ENDING="#"; else ENDING="$"; fi
 
 source /usr/share/git-core/contrib/completion/git-prompt.sh
-export PS1="${debian_chroot:+($debian_chroot)}\u@\H:\w\$(__git_ps1 ':%s') ${ENDING} "
+export PS1="\u@\H:\w\$(__git_ps1 ':%s') ${ENDING} "
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
