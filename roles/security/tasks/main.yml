@@ -23,7 +23,7 @@
   tags:
     - security
 
-- name: setup SELinux
+- name: setup seLinux
   selinux:
     state: "{{ selinux_policy }}"
   when: ansible_virtualization_type != "docker"

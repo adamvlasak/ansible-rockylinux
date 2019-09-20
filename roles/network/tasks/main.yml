@@ -15,14 +15,6 @@
   tags:
     - network
 
-- name: configure dnsmasq
-  template:
-    src: dnsmasq.conf.j2
-    dest: /etc/dnsmasq.conf
-  notify: dnsmasq
-  tags:
-    - network
-
 - name: download hosts.ads file
   get_url:
     url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
@@ -31,6 +23,14 @@
     group: root
     mode: 0644
   when: adblock|bool
+  tags:
+    - network
+
+- name: configure dnsmasq
+  template:
+    src: dnsmasq.conf.j2
+    dest: /etc/dnsmasq.conf
+  notify: dnsmasq
   tags:
     - network
 
