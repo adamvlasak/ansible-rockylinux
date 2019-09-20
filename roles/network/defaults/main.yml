@@ -8,3 +8,4 @@ nameservers:
 
 packages:
   - dnsmasq
+  - ufw
