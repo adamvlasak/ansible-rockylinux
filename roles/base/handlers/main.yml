@@ -4,6 +4,7 @@
     daemon_reload: yes
     state: reloaded
     enabled: yes
+  when: ansible_virtualization_type != "docker"
 
 - name: ntp
   service:
