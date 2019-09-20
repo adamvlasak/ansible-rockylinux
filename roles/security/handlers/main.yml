@@ -7,13 +7,6 @@
     state: restarted
   when: ansible_virtualization_type != "docker"
 
-- name: privoxy
-  systemd:
-    name: privoxy
-    enabled: yes
-    daemon_reload: yes
-    state: restarted
-
 - name: dnsmasq
   systemd:
     name: dnsmasq
