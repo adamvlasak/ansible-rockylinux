@@ -72,6 +72,15 @@
   tags:
     - network
 
+- name: setup ufw default routed policy
+  ufw:
+    policy: deny
+    direction: routed
+  notify: reload ufw
+  when: ansible_virtualization_type != "docker"
+  tags:
+    - network
+
 - name: allow ssh in ufw
   ufw:
     rule: allow
