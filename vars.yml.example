@@ -1,6 +1,4 @@
 ---
-ignored_ips: <your isp address>
-
 vim_plugins:
   - https://github.com/vim-syntastic/syntastic.git
   - https://github.com/pearofducks/ansible-vim

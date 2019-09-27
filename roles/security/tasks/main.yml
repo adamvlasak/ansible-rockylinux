@@ -10,7 +10,6 @@
     src: jail.local
     dest: /etc/fail2ban/jail.local
   notify: fail2ban
-  when: ignored_ips is defined
   tags:
     - security
 
@@ -19,7 +18,6 @@
     name: fail2ban
     state: started
     enabled: yes
-  when: ignored_ips is defined
   tags:
     - security
 
