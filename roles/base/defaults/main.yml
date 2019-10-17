@@ -32,6 +32,8 @@ packages:
   - net-tools
   - ntp
   - python
+  - python-netaddr
+  - python-requests
   - ShellCheck
   - sysstat
   - tar
