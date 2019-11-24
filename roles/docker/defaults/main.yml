@@ -1,6 +1,6 @@
 ---
 docker_machine_package_name: "docker-machine-{{ ansible_system|lower }}-{{ ansible_architecture|lower }}"
-docker_compose_version: "1.24"
+docker_compose_version: "1.24.1"
 
 packages:
   - yum-utils
