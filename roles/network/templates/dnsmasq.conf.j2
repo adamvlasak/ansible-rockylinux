@@ -1,5 +1,6 @@
 listen-address=127.0.0.1
 bind-dynamic
+local-service
 bogus-priv
 filterwin2k
 domain-needed
@@ -9,6 +10,7 @@ log-async=20
 cache-size=8192
 no-negcache
 no-hosts
+no-poll
 
 {% if adblock %}
 addn-hosts=/etc/hosts.ads
@@ -17,6 +19,3 @@ addn-hosts=/etc/hosts.ads
 {% for nameserver in nameservers %}
 server={{ nameserver }}
 {% endfor %}
-
-# Include all files in /etc/dnsmasq.d except RPM backup files
-conf-dir=/etc/dnsmasq.d,.rpmnew,.rpmsave,.rpmorig
