@@ -42,6 +42,7 @@ packages:
   - tmux
   - traceroute
   - tree
+  - ufw
   - unzip
   - vim
   - w3m
