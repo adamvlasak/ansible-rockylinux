@@ -3,7 +3,7 @@
 export LANG=en_US.UTF-8
 export EDITOR=vim
 export BROWSER=w3m
-export TERM=screen-256color
+export TERM=xterm-256color
 export HISTSIZE=1000
 export HISTFILESIZE=1000
 export HISTCONTROL=ignoreboth
