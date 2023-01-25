@@ -1,9 +1,0 @@
----
-- name: restart network
-  service:
-    name: network
-    state: restarted
-
-- name: reload ufw
-  ufw:
-    state: reloaded

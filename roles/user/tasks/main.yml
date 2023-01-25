@@ -1,4 +1,20 @@
 ---
+- name: comment out ALL requiring password in /etc/sudoers
+  lineinfile:
+    path: /etc/sudoers
+    line: "# %wheel  ALL=(ALL)       ALL"
+    regexp: "^%wheel  ALL=(ALL)       ALL"
+  tags:
+    - users
+
+- name: "enable NOPASSWD: ALL in /etc/sudoers"
+  lineinfile:
+    path: /etc/sudoers
+    line: "%wheel        ALL=(ALL)       NOPASSWD: ALL"
+    regexp: "^# %wheel        ALL=(ALL)       NOPASSWD: ALL"
+  tags:
+    - users
+
 - name: create group for intended user
   group:
     name: "{{ login }}"

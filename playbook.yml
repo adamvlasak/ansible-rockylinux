@@ -4,9 +4,7 @@
   hosts: all
   roles:
     - base
-    - postfix
     - network
-    - security
     - docker
     - user
     - vim

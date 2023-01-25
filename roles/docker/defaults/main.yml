@@ -1,22 +1,6 @@
 ---
-docker_machine_package_name: "docker-machine-{{ ansible_system|lower }}-{{ ansible_architecture|lower }}"
-docker_compose_version: "1.24.1"
-
 packages:
-  - yum-utils
-  - device-mapper-persistent-data
-  - lvm2
-  - python2-pip
-  - pigz
-
-absent_packages:
-  - docker
-  - docker-client
-  - docker-client-latest
-  - docker-common
-  - docker-latest
-  - docker-latest-logrotate
-  - docker-logrotate
-  - docker-selinux
-  - docker-engine-selinux
-  - docker-engine
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-compose-plugin

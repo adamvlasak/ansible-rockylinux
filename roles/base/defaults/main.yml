@@ -1,22 +1,12 @@
 ---
 yum_cleanup: yes
 
-absent_repos:
-  - /etc/yum.repos.d/CentOS-CR.repo
-  - /etc/yum.repos.d/CentOS-Debuginfo.repo
-  - /etc/yum.repos.d/CentOS-fasttrack.repo
-  - /etc/yum.repos.d/CentOS-Media.repo
-  - /etc/yum.repos.d/CentOS-Sources.repo
-  - /etc/yum.repos.d/CentOS-Vault.repo
-
 packages:
   - ansible
   - bash-completion
-  - bash-completion-extras
   - curl
   - bind-utils
   - ca-certificates
-  - deltarpm
   - git
   - glibc-common
   - golang
@@ -30,7 +20,6 @@ packages:
   - mlocate
   - ncdu
   - net-tools
-  - ntp
   - python
   - python-netaddr
   - python-requests

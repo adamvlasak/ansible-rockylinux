@@ -1,27 +1,17 @@
 ---
-- name: remove repos we don't need
-  file:
-    path: "{{ item }}"
-    state: absent
-  loop:
-    - "{{ absent_repos }}"
-  when: yum_cleanup|bool
-  tags:
-    - base
-
 - name: enable epel repo
-  yum:
+  dnf:
     name: epel-release
-  notify: yum clean
+  notify: dnf clean
   tags:
     - base
 
 - name: install necessary packages
-  yum:
+  dnf:
     name: "{{ packages }}"
     state: present
     update_cache: yes
-  notify: yum clean
+  notify: dnf clean
   tags:
     - base
 
@@ -38,7 +28,6 @@
     dest: /etc/localtime
     force: yes
     state: link
-  notify: ntp
   tags:
     - base
 

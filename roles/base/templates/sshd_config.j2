@@ -1,14 +1,18 @@
-#	$OpenBSD: sshd_config,v 1.100 2016/08/15 12:32:04 naddy Exp $
+#	$OpenBSD: sshd_config,v 1.104 2021/07/02 05:11:21 dtucker Exp $
 
 # This is the sshd server system-wide configuration file.  See
 # sshd_config(5) for more information.
 
-# This sshd was compiled with PATH=/usr/local/bin:/usr/bin
+# This sshd was compiled with PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 
 # The strategy used for options in the default sshd_config shipped with
 # OpenSSH is to specify options with their default value where
 # possible, but leave them commented.  Uncommented options override the
 # default value.
+
+# To modify the system-wide sshd configuration, create a  *.conf  file under
+#  /etc/ssh/sshd_config.d/  which will be automatically included below
+Include /etc/ssh/sshd_config.d/*.conf
 
 # If you want to change the port on a SELinux system, you have to tell
 # SELinux about this change.
@@ -33,7 +37,7 @@ SyslogFacility AUTHPRIV
 # Authentication:
 
 #LoginGraceTime 2m
-PermitRootLogin yes
+PermitRootLogin prohibit-password
 #StrictModes yes
 MaxAuthTries 3
 #MaxSessions 10
@@ -82,14 +86,14 @@ GSSAPICleanupCredentials no
 
 # Set this to 'yes' to enable PAM authentication, account processing,
 # and session processing. If this is enabled, PAM authentication will
-# be allowed through the ChallengeResponseAuthentication and
+# be allowed through the KbdInteractiveAuthentication and
 # PasswordAuthentication.  Depending on your PAM configuration,
-# PAM authentication via ChallengeResponseAuthentication may bypass
+# PAM authentication via KbdInteractiveAuthentication may bypass
 # the setting of "PermitRootLogin without-password".
 # If you just want the PAM account and session checks to run without
 # PAM authentication, then enable this but set PasswordAuthentication
-# and ChallengeResponseAuthentication to 'no'.
-# WARNING: 'UsePAM no' is not supported in Red Hat Enterprise Linux and may cause several
+# and KbdInteractiveAuthentication to 'no'.
+# WARNING: 'UsePAM no' is not supported in RHEL and may cause several
 # problems.
 UsePAM yes
 
@@ -121,10 +125,10 @@ Compression delayed
 #Banner none
 
 # Accept locale-related environment variables
-AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
-AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
-AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
-AcceptEnv XMODIFIERS
+# AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+# AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+# AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+# AcceptEnv XMODIFIERS
 
 # override default of no subsystems
 Subsystem	sftp	/usr/libexec/openssh/sftp-server

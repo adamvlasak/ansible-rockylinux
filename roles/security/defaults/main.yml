@@ -1,7 +1,0 @@
----
-selinux_policy: disabled
-
-packages:
-  - fail2ban
-  - privoxy
-  - openvpn

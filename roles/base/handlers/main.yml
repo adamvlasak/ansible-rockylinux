@@ -6,13 +6,5 @@
     enabled: yes
   when: ansible_virtualization_type != "docker"
 
-- name: ntp
-  service:
-    name: ntpd
-    state: started
-    enabled: yes
-
-- name: yum clean
-  command: yum clean all
-  args:
-    warn: no
+- name: dnf clean
+  command: dnf clean all

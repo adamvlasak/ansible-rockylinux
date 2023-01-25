@@ -24,15 +24,12 @@ let g:ansible_with_keywords_highlight = 'Constant'
 
 let g:syntastic_javascript_checkers = ['eslint']
 
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-
 map ; :Files<CR>
 
 set noshowmode
 {% endif %}
 
-set number 
+set number
 set showmode
 set nocompatible
 set backspace=2

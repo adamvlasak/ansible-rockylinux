@@ -8,7 +8,7 @@ vim_plugins:
   - https://github.com/junegunn/fzf
   - https://github.com/junegunn/fzf.vim
 
-postfix_myhostname: example.org
+hostname: example.org
 
 email: "john@doe.org"
 username: "John Doe"

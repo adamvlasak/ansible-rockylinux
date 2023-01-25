@@ -1,68 +1,15 @@
 ---
-- name: install required packages for docker
-  yum:
-    name: "{{ item }}"
-  loop: "{{ packages }}"
-  tags:
-    - docker
-
 - name: add yum repository for docker
-  command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  command: dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   args:
     creates: /etc/yum.repos.d/docker-ce.repo
   tags:
     - docker
 
-- rpm_key:
-    key: https://download.docker.com/linux/centos/gpg
-  tags:
-    - docker
-
-- name: install docker-ce
+- name: install required packages for docker
   yum:
-    name: docker-ce
-    state: present
-  when: ansible_virtualization_type != "docker"
-  notify:
-    - docker
-  tags:
-    - docker
-
-- name: setup /etc/docker directory
-  file:
-    path: /etc/docker
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-  tags:
-    - docker
-
-- name: provision daemon.json
-  template:
-    src: daemon.json.j2
-    dest: /etc/docker/daemon.json
-    owner: root
-    group: root
-    mode: 0644
-  notify:
-    - docker
-  tags:
-    - docker
-
-- name: start docker daemon
-  service:
-    name: docker
-    state: started
-    enabled: yes
-  when: ansible_virtualization_type != "docker"
-  tags:
-    - docker
-
-- name: docker-compose present
-  pip:
-    name: docker-compose
-    version: "{{ docker_compose_version }}"
-  when: not ansible_check_mode
+    name: "{{ item }}"
+  loop: "{{ packages }}"
+  notify: restart docker
   tags:
     - docker
