@@ -22,12 +22,10 @@
   tags:
     - base
 
-- name: setup correct time
-  file:
-    src: /usr/share/zoneinfo/Europe/Prague
-    dest: /etc/localtime
-    force: yes
-    state: link
+- name: setup timezone
+  timezone:
+    name: Europe/Prague
+    hwclock: local
   tags:
     - base
 

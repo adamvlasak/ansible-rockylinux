@@ -27,6 +27,7 @@ packages:
   - sysstat
   - tar
   - telnet
+  - tcpdump
   - tig
   - tmux
   - traceroute
