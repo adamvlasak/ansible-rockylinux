@@ -12,7 +12,7 @@ This step assumes you have root access, you can SSH to your machine, you know it
 ```
 $ dnf install git vim ansible
 $ mkdir src && cd src
-$ git clone git@github.com:adamvlasak/work-machine.git
+$ git clone git@github.com:adamvlasak/ansible-rockylinux.git
 $ cd work-machine/
 $ touch hosts
 $ cp vars.example vars.yml
