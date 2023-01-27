@@ -2,12 +2,14 @@
 yum_cleanup: true
 
 packages:
+  - ShellCheck
   - ansible
   - bash-completion
-  - curl
   - bind-utils
   - ca-certificates
+  - curl
   - git
+  - glances
   - glibc-common
   - golang
   - htop
@@ -20,19 +22,17 @@ packages:
   - mlocate
   - ncdu
   - net-tools
-  - python
-  - python-netaddr
-  - python-requests
-  - ShellCheck
+  - python3
+  - python3-netaddr
+  - python3-requests
   - sysstat
   - tar
-  - telnet
   - tcpdump
+  - telnet
   - tig
   - tmux
   - traceroute
   - tree
-  - ufw
   - unzip
   - vim
   - w3m
