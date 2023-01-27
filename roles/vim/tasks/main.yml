@@ -1,56 +1,38 @@
 ---
-- name: prepare pathogen directories
-  file:
+- name: Prepare pathogen directories
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    recurse: yes
+    recurse: true
     owner: "{{ login }}"
     group: "{{ login }}"
+    mode: 0700
   loop:
     - /home/{{ login }}/.vim/autoload
     - /home/{{ login }}/.vim/plugged
   tags:
     - vim
 
-- name: install vim-plug
-  get_url:
+- name: Install vim-plug
+  ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: "{{ item  }}"
+    dest: "{{ item }}"
     owner: "{{ login }}"
     group: "{{ login }}"
+    mode: 0500
   when: not ansible_check_mode
   loop:
     - /home/{{ login }}/.vim/autoload/plug.vim
   tags:
     - vim
 
-- name: put plugins into plugged directory
-  git:
-    repo: "{{ item }}"
-    dest: "/home/{{ login }}/.vim/plugged/{{ item.split('/')[4] }}"
-    update: yes
-    depth: 1
-  when: vim_plugins is defined and not ansible_check_mode
-  loop: "{{ vim_plugins }}"
-  tags:
-    - vim
-
-- name: set correct permissions on vim plugins
-  file:
-    path: "/home/{{ login }}/.vim/plugged"
-    owner: "{{ login }}"
-    group: "{{ login }}"
-    recurse: yes
-  when: not ansible_check_mode
-  tags:
-    - vim
-
-- name: provision .vimrc
-  template:
+- name: Provision .vimrc
+  ansible.builtin.template:
     dest: "{{ item }}"
     src: vimrc
     owner: "{{ login }}"
     group: "{{ login }}"
+    mode: 0600
   loop:
     - "/home/{{ login }}/.vimrc"
     - "/root/.vimrc"

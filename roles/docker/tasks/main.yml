@@ -1,15 +1,15 @@
 ---
-- name: add yum repository for docker
-  command: dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+- name: Add yum repository for docker
+  ansible.builtin.command: dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   args:
     creates: /etc/yum.repos.d/docker-ce.repo
   tags:
     - docker
 
-- name: install required packages for docker
-  yum:
+- name: Install required packages for docker
+  ansible.builtin.dnf:
     name: "{{ item }}"
   loop: "{{ packages }}"
-  notify: restart docker
+  notify: Restart docker
   tags:
     - docker

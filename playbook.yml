@@ -1,5 +1,5 @@
 ---
-- name: setup work machine
+- name: Setup work machine
   vars_files: vars.yml
   hosts: all
   roles:

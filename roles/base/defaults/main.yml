@@ -1,5 +1,5 @@
 ---
-yum_cleanup: yes
+yum_cleanup: true
 
 packages:
   - ansible
@@ -12,7 +12,7 @@ packages:
   - golang
   - htop
   - iftop
-  - iotop
+  - iotop-c
   - iproute
   - man
   - man-pages

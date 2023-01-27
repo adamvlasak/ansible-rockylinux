@@ -1,28 +1,28 @@
 ---
-- name: comment out ALL requiring password in /etc/sudoers
-  lineinfile:
+- name: Comment out ALL requiring password in /etc/sudoers
+  ansible.builtin.lineinfile:
     path: /etc/sudoers
     line: "# %wheel  ALL=(ALL)       ALL"
     regexp: "^%wheel  ALL=(ALL)       ALL"
   tags:
     - users
 
-- name: "enable NOPASSWD: ALL in /etc/sudoers"
-  lineinfile:
+- name: "Enable NOPASSWD: ALL in /etc/sudoers"
+  ansible.builtin.lineinfile:
     path: /etc/sudoers
     line: "%wheel        ALL=(ALL)       NOPASSWD: ALL"
     regexp: "^# %wheel        ALL=(ALL)       NOPASSWD: ALL"
   tags:
     - users
 
-- name: create group for intended user
-  group:
+- name: Create group for intended user
+  ansible.builtin.group:
     name: "{{ login }}"
   tags:
     - user
 
-- name: create intended user
-  user:
+- name: Create intended user
+  ansible.builtin.user:
     name: "{{ login }}"
     groups: ["{{ login }}", "users", "wheel"]
     shell: /bin/bash
@@ -30,8 +30,8 @@
   tags:
     - user
 
-- name: setup authorized_keys for all intended users
-  authorized_key:
+- name: Setup authorized_keys for all intended users
+  ansible.posix.authorized_key:
     user: "{{ item }}"
     key: "{{ ssh_pubkey }}"
     state: present
@@ -41,40 +41,42 @@
   tags:
     - user
 
-- name: provision .gitconfig
-  template:
+- name: Provision .gitconfig
+  ansible.builtin.template:
     src: gitconfig
     dest: "{{ item }}"
     owner: "{{ login }}"
     group: "{{ login }}"
+    mode: 0600
   loop:
     - "/home/{{ login }}/.gitconfig"
   tags:
     - user
 
-- name: setup bashrc
-  template:
+- name: Provision tmux.conf
+  ansible.builtin.template:
+    src: tmux.conf
+    dest: "{{ item }}"
+    owner: "{{ login }}"
+    group: "{{ login }}"
+    mode: 0600
+  loop:
+    - "/home/{{ login }}/tmux.conf"
+  tags:
+    - user
+
+- name: Setup bashrc
+  ansible.builtin.template:
     src: bashrc
     dest: /etc/profile.d/bashrc.sh
     mode: 0644
   tags:
     - user
 
-- name: setup environment variables
-  template:
+- name: Setup environment variables
+  ansible.builtin.template:
     src: vars.sh
     dest: /etc/profile.d/vars.sh
     mode: 0644
-  tags:
-    - user
-
-- name: provision tmux.conf
-  template:
-    src: tmux.conf
-    dest: "{{ item }}"
-    owner: "{{ login }}"
-    group: "{{ login }}"
-  loop:
-    - "/home/{{ login }}/tmux.conf"
   tags:
     - user

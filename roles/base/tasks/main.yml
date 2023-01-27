@@ -1,38 +1,41 @@
 ---
-- name: enable epel repo
-  dnf:
+- name: Enable epel repo
+  ansible.builtin.dnf:
     name: epel-release
-  notify: dnf clean
+  notify: Dnf clean
   tags:
     - base
 
-- name: install necessary packages
-  dnf:
+- name: Install necessary packages
+  ansible.builtin.dnf:
     name: "{{ packages }}"
     state: present
-    update_cache: yes
-  notify: dnf clean
+    update_cache: true
+  notify: Dnf clean
   tags:
     - base
 
-- name: set machine hostname
-  hostname:
+- name: Set machine hostname
+  ansible.builtin.hostname:
     name: "{{ hostname }}"
   when: hostname is defined and ansible_virtualization_type != "docker"
   tags:
     - base
 
-- name: setup timezone
-  timezone:
+- name: Setup timezone
+  community.general.timezone:
     name: Europe/Prague
     hwclock: local
   tags:
     - base
 
-- name: configure sshd
-  template:
+- name: Configure sshd
+  ansible.builtin.template:
     src: sshd_config.j2
     dest: /etc/ssh/sshd_config
-  notify: ssh
+    user: root
+    group: root
+    mode: 0600
+  notify: Restart ssh
   tags:
     - base

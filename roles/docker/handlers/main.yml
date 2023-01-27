@@ -1,7 +1,7 @@
 ---
-- name: restart docker
-  systemd:
+- name: Restart docker
+  ansible.builtin.systemd:
     name: docker
-    enabled: yes
+    enabled: true
     state: restarted
   when: ansible_virtualization_type != "docker"
