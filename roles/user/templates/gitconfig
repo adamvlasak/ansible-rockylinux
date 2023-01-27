@@ -3,6 +3,10 @@
 	email = {{ email }}
 [push]
 	default = simple
+[pull]
+	rebase = true
+[fetch]
+	prune = true
 [color]
 	diff = auto
 	status = auto
