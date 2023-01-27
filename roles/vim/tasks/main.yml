@@ -3,11 +3,11 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    recurse: true
     owner: "{{ login }}"
     group: "{{ login }}"
     mode: 0700
   loop:
+    - /home/{{ login }}/.vim
     - /home/{{ login }}/.vim/autoload
     - /home/{{ login }}/.vim/plugged
   tags:
