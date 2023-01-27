@@ -1,6 +1,6 @@
 ---
 vim_plugins:
-  - vim-syntastic/syntastic
+  - dense-analysis/ale
   - pearofducks/ansible-vim
   - vim-airline/vim-airline
   - junegunn/fzf
