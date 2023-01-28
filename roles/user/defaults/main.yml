@@ -1,5 +1,10 @@
 ---
-email: "john.doe@example.org"
-username: "John Doe"
-login: "johndoe"
-ssh_pubkey: "foobar"
+user:
+  login: "johndoe"
+  groups:
+    - users
+    - wheel
+    - docker
+  email: "john.doe@example.org"
+  fullname: "John Doe"
+  ssh_pubkey: "foobar"

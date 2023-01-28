@@ -3,13 +3,13 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ login }}"
-    group: "{{ login }}"
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
     mode: 0700
   loop:
-    - /home/{{ login }}/.vim
-    - /home/{{ login }}/.vim/autoload
-    - /home/{{ login }}/.vim/plugged
+    - /home/{{ user.login }}/.vim
+    - /home/{{ user.login }}/.vim/autoload
+    - /home/{{ user.login }}/.vim/plugged
   tags:
     - vim
 
@@ -17,12 +17,12 @@
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ item }}"
-    owner: "{{ login }}"
-    group: "{{ login }}"
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
     mode: 0500
   when: not ansible_check_mode
   loop:
-    - /home/{{ login }}/.vim/autoload/plug.vim
+    - /home/{{ user.login }}/.vim/autoload/plug.vim
   tags:
     - vim
 
@@ -30,11 +30,11 @@
   ansible.builtin.template:
     dest: "{{ item }}"
     src: vimrc
-    owner: "{{ login }}"
-    group: "{{ login }}"
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
     mode: 0600
   loop:
-    - "/home/{{ login }}/.vimrc"
+    - "/home/{{ user.login }}/.vimrc"
     - "/root/.vimrc"
   tags:
     - vim

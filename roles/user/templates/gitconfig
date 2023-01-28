@@ -1,6 +1,6 @@
 [user]
-	name = {{ username }}
-	email = {{ email }}
+	name = {{ user.fullname }}
+	email = {{ user.email }}
 [push]
 	default = simple
 [pull]

@@ -8,7 +8,13 @@ vim_plugins:
 
 hostname: example.org
 
-email: "john@doe.org"
-username: "John Doe"
-login: "jdoe"
-ssh_pubkey: "ssh-rsa AAAXXXfoobar john@doe.org"
+user:
+  login: "jdoe"
+  groups:
+    - "{{ user.login }}"
+    - users
+    - wheel
+    - docker
+  email: "john@doe.org"
+  fullname: "John Doe"
+  ssh_pubkey: "ssh-rsa AAAXXXfoobar john@doe.org"

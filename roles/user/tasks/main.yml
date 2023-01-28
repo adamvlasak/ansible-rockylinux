@@ -17,27 +17,29 @@
 
 - name: Create group for intended user
   ansible.builtin.group:
-    name: "{{ login }}"
+    name: "{{ user.login }}"
+    state: present
   tags:
     - user
 
 - name: Create intended user
   ansible.builtin.user:
-    name: "{{ login }}"
-    groups: ["{{ login }}", "users", "wheel"]
+    name: "{{ user.login }}"
+    groups: "{{ user.groups }}"
     shell: /bin/bash
-    home: "/home/{{ login }}"
+    home: "/home/{{ user.login }}"
+    state: present
   tags:
     - user
 
 - name: Setup authorized_keys for all intended users
   ansible.posix.authorized_key:
     user: "{{ item }}"
-    key: "{{ ssh_pubkey }}"
+    key: "{{ user.ssh_pubkey }}"
     state: present
   loop:
     - root
-    - "{{ login }}"
+    - "{{ user.login }}"
   tags:
     - user
 
@@ -45,11 +47,11 @@
   ansible.builtin.template:
     src: gitconfig
     dest: "{{ item }}"
-    owner: "{{ login }}"
-    group: "{{ login }}"
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
     mode: 0600
   loop:
-    - "/home/{{ login }}/.gitconfig"
+    - "/home/{{ user.login }}/.gitconfig"
   tags:
     - user
 
@@ -57,11 +59,11 @@
   ansible.builtin.template:
     src: tmux.conf
     dest: "{{ item }}"
-    owner: "{{ login }}"
-    group: "{{ login }}"
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
     mode: 0600
   loop:
-    - "/home/{{ login }}/tmux.conf"
+    - "/home/{{ user.login }}/tmux.conf"
   tags:
     - user
 
