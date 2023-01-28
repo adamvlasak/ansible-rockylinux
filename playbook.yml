@@ -6,5 +6,6 @@
     - base
     - network
     - docker
+    - kubernetes
     - user
     - vim

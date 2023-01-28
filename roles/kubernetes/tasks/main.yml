@@ -1,0 +1,23 @@
+---
+- name: Install minikube
+  ansible.builtin.dnf:
+    name: https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+    state: present
+  tags:
+    - kubernetes
+
+- name: Install kubectl
+  tags:
+    - kubernetes
+  block:
+    - name: Get latest version of kubectl
+      ansible.builtin.shell: curl -L -s https://dl.k8s.io/release/stable.txt
+      register: kubectl_version
+
+    - name: Download kubectl
+      ansible.builtin.get_url:
+        url: "https://dl.k8s.io/release/{{ kubectl_version.stdout }}/bin/linux/amd64/kubectl"
+        dest: /usr/local/bin/kubectl
+        owner: root
+        group: root
+        mode: 0777

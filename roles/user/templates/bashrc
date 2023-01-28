@@ -13,6 +13,8 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 
+alias minikube-start="minikube start --addons=dashboard --addons=metrics-server --addons=ingress --addons=ingress-dns"
+
 # some usefull functions
 extract () {
   if [ -f "$1" ] ; then
