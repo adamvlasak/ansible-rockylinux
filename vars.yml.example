@@ -9,9 +9,9 @@ vim_plugins:
 hostname: example.org
 
 user:
-  login: "jdoe"
+  login: "johndoe"
   groups:
-    - "{{ user.login }}"
+    - johndoe
     - users
     - wheel
     - docker
