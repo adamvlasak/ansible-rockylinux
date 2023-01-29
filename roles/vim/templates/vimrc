@@ -24,16 +24,17 @@ map ; :Files<CR>
 set noshowmode
 {% endif %}
 
+syntax on
+set nocompatible
 set number
 set showmode
-set nocompatible
-set backspace=2
-syntax on
+set ttyfast
 set fileencodings=utf-8,latin2
-filetype plugin indent off
-set tabstop=4
-set shiftwidth=4
-set expandtab
+
+set ts=4 sw=4 expandtab smarttab
+autocmd FileType yaml setlocal ts=2 sw=2
+autocmd FileType yml setlocal ts=2 sw=2
+autocmd FileType make setlocal ts=2 sw=2 noexpandtab
 
 if &term == "screen"
   set t_Co=256
