@@ -4,7 +4,6 @@
     daemon_reload: true
     state: reloaded
     enabled: true
-  when: ansible_virtualization_type != "docker"
 
 - name: Dnf clean
   ansible.builtin.command: dnf clean all
