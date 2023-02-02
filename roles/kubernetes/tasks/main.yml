@@ -3,10 +3,12 @@
   ansible.builtin.dnf:
     name: https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
     state: present
+  when: kubernetes_enabled is defined and kubernetes_enabled is true
   tags:
     - kubernetes
 
 - name: Install kubectl
+  when: kubernetes_enabled is defined and kubernetes_enabled is true
   tags:
     - kubernetes
   block:

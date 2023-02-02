@@ -8,6 +8,9 @@ vim_plugins:
 
 hostname: example.org
 
+docker_enabled: false
+kubernetes_enabled: false
+
 user:
   login: "johndoe"
   groups:
