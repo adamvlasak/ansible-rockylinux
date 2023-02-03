@@ -8,6 +8,7 @@ packages:
   - bind-utils
   - ca-certificates
   - curl
+  - file
   - git
   - glances
   - glibc-common
