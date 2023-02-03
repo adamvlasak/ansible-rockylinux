@@ -10,6 +10,7 @@ hostname: example.org
 
 docker_enabled: false
 kubernetes_enabled: false
+wsl2: false
 
 user:
   login: "johndoe"

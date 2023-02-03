@@ -18,7 +18,7 @@
 - name: Set machine hostname
   ansible.builtin.hostname:
     name: "{{ hostname }}"
-  when: hostname is defined
+  when: hostname is defined and wsl2 is false
   tags:
     - base
 
@@ -36,6 +36,7 @@
     user: root
     group: root
     mode: 0600
+  when: wsl2 is false
   notify: Restart ssh
   tags:
     - base
