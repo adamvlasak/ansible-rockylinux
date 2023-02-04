@@ -1,4 +1,4 @@
-# bashrc
+# .bashrc
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -6,9 +6,16 @@ if [ -f /etc/bashrc ]; then
 fi
 
 if [ ${UID} == 0 ]; then ENDING="#"; else ENDING="$"; fi
-
 source /usr/share/git-core/contrib/completion/git-prompt.sh
 export PS1="\u@\H:\w\$(__git_ps1 ':%s') ${ENDING} "
+
+if [ -d ~/.local/bin ]; then
+    export PATH="${PATH}:~/.local/bin";
+fi
+
+if [ -d ~/bin ]; then
+    export PATH="${PATH}:~/bin";
+fi
 
 alias ls='ls --color=auto'
 alias ll='ls -alF'
