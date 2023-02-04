@@ -1,21 +1,13 @@
 ---
-- name: Comment out ALL requiring password in /etc/sudoers
-  ansible.builtin.lineinfile:
-    path: /etc/sudoers
-    line: "# %wheel  ALL=(ALL)       ALL"
-    regexp: "^%wheel  ALL=(ALL)       ALL"
-  when: wsl2 is false
-  tags:
-    - users
-
 - name: "Enable NOPASSWD: ALL in /etc/sudoers"
-  ansible.builtin.lineinfile:
-    path: /etc/sudoers
-    line: "%wheel        ALL=(ALL)       NOPASSWD: ALL"
-    regexp: "^# %wheel        ALL=(ALL)       NOPASSWD: ALL"
-  when: wsl2 is false
+  ansible.builtin.copy:
+    dest: /etc/sudoers.d/wheel
+    content: "%wheel ALL=(ALL) NOPASSWD: ALL"
+    owner: root
+    group: root
+    mode: 0440
   tags:
-    - users
+    - user
 
 - name: Create group for intended user
   ansible.builtin.group:
