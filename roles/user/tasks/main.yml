@@ -38,35 +38,19 @@
   tags:
     - user
 
-- name: Provision .gitconfig
+- name: Provision dotfiles
   ansible.builtin.template:
-    src: gitconfig
-    dest: "{{ item }}"
-    owner: "{{ user.login }}"
-    group: "{{ user.login }}"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.owner }}"
     mode: 0600
   loop:
-    - "/home/{{ user.login }}/.gitconfig"
-  tags:
-    - user
-
-- name: Provision tmux.conf
-  ansible.builtin.template:
-    src: tmux.conf
-    dest: "{{ item }}"
-    owner: "{{ user.login }}"
-    group: "{{ user.login }}"
-    mode: 0600
-  loop:
-    - "/home/{{ user.login }}/tmux.conf"
-  tags:
-    - user
-
-- name: Setup bashrc
-  ansible.builtin.template:
-    src: bashrc
-    dest: /etc/profile.d/bashrc.sh
-    mode: 0644
+    - {owner: root, group: root, src: bashrc.j2, dest: "/root/.bashrc"}
+    - {owner: "{{ user.login}}", group: "{{ user.login }}", src: bashrc.j2, dest: "/home/{{ user.login }}/.bashrc"}
+    - {owner: root, group: root, src: tmux.conf.j2, dest: "/root/tmux.conf"}
+    - {owner: "{{ user.login}}", group: "{{ user.login }}", src: tmux.conf.j2, dest: "/home/{{ user.login }}/tmux.conf"}
+    - {owner: "{{ user.login}}", group: "{{ user.login }}", src: gitconfig.j2, dest: "/home/{{ user.login }}/.gitconfig"}
   tags:
     - user
 
