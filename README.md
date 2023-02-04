@@ -1,13 +1,14 @@
-# Linux Work machine
+# Rocky Linux Dev Box
 
 ## Overview
 
-This project provisions your Rocky Linux based OS for better user experience.
-Optimized for ansible 2.7+
+This project configures your Rocky Linux based OS for better user experience.
 
 ## Provisioning via ansible
 
-This step assumes you have root access, you can SSH to your machine, you know its IP address and it runs Rocky Linux. Please copy your id_rsa, id_rsa.pub and create authorized_keys in your /root/.ssh directory.
+This step assumes you have root access, you can SSH to your machine, you know
+its IP address and it runs Rocky Linux. Please put your public key to
+`/root/.ssh/authorized_keys` file.
 
 ```
 $ git clone git@github.com:adamvlasak/ansible-rockylinux.git
