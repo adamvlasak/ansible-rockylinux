@@ -10,15 +10,12 @@ Optimized for ansible 2.7+
 This step assumes you have root access, you can SSH to your machine, you know its IP address and it runs Rocky Linux. Please copy your id_rsa, id_rsa.pub and create authorized_keys in your /root/.ssh directory.
 
 ```
-$ dnf install git vim ansible
-$ mkdir src && cd src
 $ git clone git@github.com:adamvlasak/ansible-rockylinux.git
 $ cd work-machine/
-$ touch hosts
+$ echo "homelab.loc ansible_user=root ansible_host=<IP>" > hosts
 $ cp vars.example vars.yml
 ```
-
-You must create two files: hosts and vars.yml in root of the project and set up according to your needs (see vars.example). Then run playbook:
+Edit `vars.yml` to your liking.
 
 ```
 $ make provision
