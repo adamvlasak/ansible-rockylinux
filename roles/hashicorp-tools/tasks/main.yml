@@ -1,0 +1,28 @@
+---
+- name: Setup hashicorp repository
+  ansible.builtin.template:
+    src: hashicorp.repo.j2
+    dest: /etc/yum.repos.d/hashicorp.repo
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - hashicorp-tools
+
+- name: Install hashicorp tools
+  ansible.builtin.dnf:
+    name: ["packer", "terraform"]
+    state: present
+    update_cache: true
+  tags:
+    - hashicorp-tools
+
+- name: Install terragrunt
+  ansible.builtin.get_url:
+    url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
+    dest: /usr/bin/terragrunt
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - hashicorp-tools
