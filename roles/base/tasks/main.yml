@@ -10,7 +10,6 @@
   ansible.builtin.dnf:
     name: "{{ packages }}"
     state: present
-    update_cache: true
   notify: Dnf clean
   tags:
     - base

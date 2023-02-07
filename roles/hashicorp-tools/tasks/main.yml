@@ -13,7 +13,6 @@
   ansible.builtin.dnf:
     name: ["packer", "terraform"]
     state: present
-    update_cache: true
   tags:
     - hashicorp-tools
 
