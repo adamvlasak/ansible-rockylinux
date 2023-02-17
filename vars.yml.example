@@ -1,8 +1,8 @@
 ---
 vim_plugins:
+  - itchyny/lightline.vim
   - dense-analysis/ale
   - pearofducks/ansible-vim
-  - vim-airline/vim-airline
   - junegunn/fzf
   - junegunn/fzf.vim
 

@@ -5,10 +5,6 @@ Plug '{{ plugin }}'
 {% endfor %}
 call plug#end()
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:ansible_unindent_after_newline = 1
 let g:ansible_extra_syntaxes = "sh.vim ruby.vim"
 let g:ansible_attribute_highlight = "ob"
@@ -17,27 +13,24 @@ let g:ansible_extra_keywords_highlight = 1
 let g:ansible_normal_keywords_highlight = 'Constant'
 let g:ansible_with_keywords_highlight = 'Constant'
 
-let g:syntastic_javascript_checkers = ['eslint']
-
-map ; :Files<CR>
-
 set noshowmode
 {% endif %}
+
+noremap ; :Files<CR>
 
 syntax on
 set nocompatible
 set number
 set showmode
 set ttyfast
+set lazyredraw
 set fileencodings=utf-8,latin2
+set laststatus=2
 
 set ts=4 sw=4 expandtab smarttab
 autocmd FileType yaml setlocal ts=2 sw=2
 autocmd FileType yml setlocal ts=2 sw=2
 autocmd FileType make setlocal ts=2 sw=2 noexpandtab
 
-if &term == "screen"
-  set t_Co=256
-endif
-
+set t_Co=256
 colorscheme desert
