@@ -8,6 +8,7 @@ packages:
   - bind-utils
   - ca-certificates
   - curl
+  - dnf-plugin-versionlock
   - file
   - git
   - glances
@@ -24,6 +25,7 @@ packages:
   - mlocate
   - ncdu
   - net-tools
+  - procps-ng
   - python3
   - python3-netaddr
   - python3-requests
@@ -37,7 +39,6 @@ packages:
   - traceroute
   - tree
   - unzip
+  - util-linux-core
   - vim
-  - w3m
   - wget
-  - yum-plugin-versionlock
