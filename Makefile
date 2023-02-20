@@ -1,3 +1,7 @@
+lint:
+	yamllint .
+	ansible-lint
+
 test:
 	ansible-playbook playbook.yml --check --diff
 
