@@ -24,7 +24,6 @@
 - name: Setup timezone
   community.general.timezone:
     name: Europe/Prague
-    hwclock: local
   tags:
     - base
 
