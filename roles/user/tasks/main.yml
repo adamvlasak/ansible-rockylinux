@@ -1,11 +1,9 @@
 ---
 - name: "Enable NOPASSWD: ALL in /etc/sudoers"
-  ansible.builtin.copy:
-    dest: /etc/sudoers.d/wheel
-    content: "%wheel ALL=(ALL) NOPASSWD: ALL"
-    owner: root
-    group: root
-    mode: 0440
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    line: "%wheel ALL=(ALL) NOPASSWD: ALL"
+    regexp: "NOPASSWD:.+ALL"
   tags:
     - user
 
