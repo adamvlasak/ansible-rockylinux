@@ -1,0 +1,16 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: rocky8
+    image: quay.io/rockylinux/rockylinux:8
+    pre_build_image: true
+  - name: rocky9
+    image: quay.io/rockylinux/rockylinux:9
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
