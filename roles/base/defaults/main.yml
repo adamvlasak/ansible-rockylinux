@@ -40,6 +40,5 @@ packages:
   - traceroute
   - tree
   - unzip
-  - util-linux-core
   - vim
   - wget
