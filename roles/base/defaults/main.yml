@@ -30,6 +30,7 @@ packages:
   - python3-netaddr
   - python3-requests
   - rsync
+  - sudo
   - sysstat
   - tar
   - tcpdump
