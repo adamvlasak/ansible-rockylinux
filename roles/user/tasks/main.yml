@@ -65,15 +65,13 @@
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
-    owner: "{{ item.owner }}"
-    group: "{{ item.owner }}"
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
     mode: 0600
   loop:
-    - {owner: root, group: root, src: bashrc.j2, dest: "/root/.bashrc"}
-    - {owner: "{{ user.login }}", group: "{{ user.login }}", src: bashrc.j2, dest: "/home/{{ user.login }}/.bashrc"}
-    - {owner: root, group: root, src: tmux.conf.j2, dest: "/root/.tmux.conf"}
-    - {owner: "{{ user.login }}", group: "{{ user.login }}", src: tmux.conf.j2, dest: "/home/{{ user.login }}/.tmux.conf"}
-    - {owner: "{{ user.login }}", group: "{{ user.login }}", src: gitconfig.j2, dest: "/home/{{ user.login }}/.gitconfig"}
+    - {src: bashrc.j2, dest: "/home/{{ user.login }}/.bashrc"}
+    - {src: tmux.conf.j2, dest: "/home/{{ user.login }}/.tmux.conf"}
+    - {src: gitconfig.j2, dest: "/home/{{ user.login }}/.gitconfig"}
   tags:
     - user
 
