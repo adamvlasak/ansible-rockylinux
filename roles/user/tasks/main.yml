@@ -24,10 +24,21 @@
   tags:
     - user
 
+- name: Configure user directories for systemd
+  ansible.builtin.file:
+    path: "/home/{{ user.login }}/.config/systemd/user"
+    state: directory
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
+    mode: 0644
+    recurse: true
+  tags:
+    - user
+
 - name: Configure ssh-agent.service
-  template:
+  ansible.builtin.template:
     src: ssh-agent.service.j2
-    dest: "/home/{{ user.login }}/.config/systemd/ssh-agent.service"
+    dest: "/home/{{ user.login }}/.config/systemd/user/ssh-agent.service"
     owner: "{{ user.login }}"
     group: "{{ user.login }}"
     mode: 0644
