@@ -1,11 +1,4 @@
 ---
-vim_plugins:
-  - itchyny/lightline.vim
-  - dense-analysis/ale
-  - pearofducks/ansible-vim
-  - junegunn/fzf
-  - junegunn/fzf.vim
-
 hostname: example.org
 
 docker_enabled: false
@@ -22,3 +15,44 @@ user:
   email: "john@doe.org"
   fullname: "John Doe"
   ssh_pubkey: "ssh-rsa AAAXXXfoobar john@doe.org"
+
+vim:
+  plugins:
+    - itchyny/lightline.vim
+    - dense-analysis/ale
+    - pearofducks/ansible-vim
+    - junegunn/fzf
+    - junegunn/fzf.vim
+  pluginsrc:
+    - let g:ansible_unindent_after_newline = 1
+    - let g:ansible_extra_syntaxes = "sh.vim ruby.vim"
+    - let g:ansible_attribute_highlight = "ob"
+    - let g:ansible_name_highlight = 'd'
+    - let g:ansible_extra_keywords_highlight = 1
+    - let g:ansible_normal_keywords_highlight = 'Constant'
+    - let g:ansible_with_keywords_highlight = 'Constant'
+    - noremap ; :Files<CR>
+  rc:
+    - noremap \ :%s/\s\+$//e<CR>
+    - syntax on
+    - set ttyfast
+    - set lazyredraw
+    - set nocompatible
+    - set noshowmode
+    - set noerrorbells
+    - set laststatus=2
+    - set hlsearch
+    - set incsearch
+    - set number
+    - set relativenumber
+    - set backspace=indent,eol,start
+    - set ts=4 sw=4 expandtab smarttab
+    - autocmd FileType yaml setlocal ts=2 sw=2
+    - autocmd FileType yml setlocal ts=2 sw=2
+    - autocmd FileType markdown setlocal ts=2 sw=2
+    - autocmd FileType make setlocal ts=2 sw=2 noexpandtab
+    - autocmd BufWritePre *.md :%s/\s\+$//e
+    - autocmd BufWritePre *.yml :%s/\s\+$//e
+    - autocmd BufWritePre *.yaml :%s/\s\+$//e
+    - autocmd BufWritePre *.j2 :%s/\s\+$//e
+    - colorscheme default

@@ -1,37 +1,13 @@
 {% if item != "/root/.vimrc" %}
 call plug#begin()
-{% for plugin in vim_plugins %}
+{% for plugin in vim.plugins %}
 Plug '{{ plugin }}'
 {% endfor %}
 call plug#end()
-
-let g:ansible_unindent_after_newline = 1
-let g:ansible_extra_syntaxes = "sh.vim ruby.vim"
-let g:ansible_attribute_highlight = "ob"
-let g:ansible_name_highlight = 'd'
-let g:ansible_extra_keywords_highlight = 1
-let g:ansible_normal_keywords_highlight = 'Constant'
-let g:ansible_with_keywords_highlight = 'Constant'
+{% for line in vim.pluginsrc %}
+{{ line }}
+{% endfor %}
 {% endif %}
-
-noremap ; :Files<CR>
-noremap \ :%s/\s\+$//e<CR>
-
-syntax on
-set nocompatible
-set noshowmode
-set hlsearch
-set ttyfast
-set lazyredraw
-set number
-set relativenumber
-set laststatus=2
-set backspace=indent,eol,start
-
-set ts=4 sw=4 expandtab smarttab
-autocmd FileType yaml setlocal ts=2 sw=2
-autocmd FileType yml setlocal ts=2 sw=2
-autocmd FileType make setlocal ts=2 sw=2 noexpandtab
-
-set t_Co=256
-colorscheme default
+{% for line in vim.rc %}
+{{ line }}
+{% endfor %}
