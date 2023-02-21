@@ -17,17 +17,9 @@ if [ -d ~/bin ]; then
     export PATH="${PATH}:~/bin";
 fi
 
-alias ls='ls --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-alias mc='mc -b'
-
-alias minikube-start="minikube start --addons=dashboard --addons=metrics-server --addons=ingress --addons=ingress-dns"
+{% for alias in shell.aliases %}
+alias {{ alias }}
+{% endfor %}
 
 # some usefull functions
 extract () {

@@ -17,6 +17,15 @@ user:
   fullname: "John Doe"
   ssh_pubkey: "ssh-rsa AAAXXXfoobar john@doe.org"
 
+shell:
+  aliases:
+    - ls='ls --color=auto'
+    - ll='ls -alF'
+    - la='ls -A'
+    - grep='grep --color=auto'
+    - fgrep='fgrep --color=auto'
+    - egrep='egrep --color=auto'
+
 vim:
   plugins:
     - itchyny/lightline.vim
