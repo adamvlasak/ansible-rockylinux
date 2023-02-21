@@ -3,7 +3,7 @@
 {% for var in shell.env %}
 export {{ var.keys() | zip(var.values()) | map('join', "=") | join("") }}
 {% endfor %}
-{% if configure_ssh_agent != false %}
+{% if configure_ssh_agent is defined and configure_ssh_agent == true %}
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 {% endif %}
 

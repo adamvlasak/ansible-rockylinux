@@ -25,7 +25,7 @@
     - user
 
 - name: Configure ssh-agent
-  when: configure_ssh_agent is not false
+  when: configure_ssh_agent is true
   tags:
     - user
   block:
