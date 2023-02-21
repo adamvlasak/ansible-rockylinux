@@ -31,6 +31,12 @@ shell:
     - HISTSIZE: "1000"
     - HISTFILESIZE: "1000"
     - HISTCONTROL: "ignoredups:erasedups"
+  ps1colors:
+    user: 11
+    at: 220
+    host: 214
+    wd: 39
+    git: 220
 
 vim:
   plugins:
