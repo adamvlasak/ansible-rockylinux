@@ -5,3 +5,6 @@
     state: restarted
     scope: user
     enabled: true
+    daemon_reload: true
+  environment:
+    XDG_RUNTIME_DIR: "/run/user/{{ getent_passwd[{{ user.login }}].1 }}"
