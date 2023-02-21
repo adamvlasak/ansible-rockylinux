@@ -1,10 +1,8 @@
 #!/bin/bash
 
-export LANG="en_US.UTF-8"
-export EDITOR="vim"
-export HISTSIZE="1000"
-export HISTFILESIZE="1000"
-export HISTCONTROL="ignoredups:erasedups"
+{% for var in shell.env %}
+{{ var.keys() | zip(var.values()) | map('join', "=") | join("") }}
+{% endfor %}
 {% if configure_ssh_agent != false %}
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 {% endif %}

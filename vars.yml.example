@@ -25,6 +25,12 @@ shell:
     - grep='grep --color=auto'
     - fgrep='fgrep --color=auto'
     - egrep='egrep --color=auto'
+  env:
+    - LANG: "en_US.UTF-8"
+    - EDITOR: "vim"
+    - HISTSIZE: "1000"
+    - HISTFILESIZE: "1000"
+    - HISTCONTROL: "ignoredups:erasedups"
 
 vim:
   plugins:
