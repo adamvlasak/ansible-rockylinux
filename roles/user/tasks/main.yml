@@ -24,6 +24,17 @@
   tags:
     - user
 
+- name: Configure ssh-agent.service
+  template:
+    src: ssh-agent.service.j2
+    dest: "/home/{{ user.login }}/.config/systemd/ssh-agent.service"
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
+    mode: 0644
+  notify: Enable and start ssh-agent service
+  tags:
+    - user
+
 - name: Setup authorized_keys for all intended users
   ansible.posix.authorized_key:
     user: "{{ item }}"
