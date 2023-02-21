@@ -1,4 +1,15 @@
 ---
+- name: Configure /etc/wsl.conf
+  ansible.builtin.template:
+    src: wsl.conf.j2
+    dest: /etc/wsl.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: wsl2 is true
+  tags:
+    - base
+
 - name: Enable epel repo
   ansible.builtin.dnf:
     name: epel-release
