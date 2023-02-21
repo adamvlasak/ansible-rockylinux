@@ -24,26 +24,30 @@
   tags:
     - user
 
-- name: Configure user directories for systemd
-  ansible.builtin.file:
-    path: "/home/{{ user.login }}/.config/systemd/user"
-    state: directory
-    owner: "{{ user.login }}"
-    group: "{{ user.login }}"
-    mode: 0755
-    recurse: true
+- name: Configure ssh-agent
+  when: configure_ssh_agent is not false
   tags:
     - user
+  block:
+    - name: Configure user directories for systemd
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ user.login }}"
+        group: "{{ user.login }}"
+        mode: 0700
+      loop:
+        - "/home/{{ user.login }}/.config"
+        - "/home/{{ user.login }}/.config/systemd"
+        - "/home/{{ user.login }}/.config/systemd/user"
 
-- name: Configure ssh-agent.service
-  ansible.builtin.template:
-    src: ssh-agent.service.j2
-    dest: "/home/{{ user.login }}/.config/systemd/user/ssh-agent.service"
-    owner: "{{ user.login }}"
-    group: "{{ user.login }}"
-    mode: 0644
-  tags:
-    - user
+    - name: Configure ssh-agent.service
+      ansible.builtin.template:
+        src: ssh-agent.service.j2
+        dest: "/home/{{ user.login }}/.config/systemd/user/ssh-agent.service"
+        owner: "{{ user.login }}"
+        group: "{{ user.login }}"
+        mode: 0644
 
 - name: Setup authorized_keys for all intended users
   ansible.posix.authorized_key:
@@ -75,7 +79,7 @@
 
 - name: Setup environment variables
   ansible.builtin.template:
-    src: vars.sh
+    src: vars.sh.j2
     dest: /etc/profile.d/vars.sh
     mode: 0644
   tags:

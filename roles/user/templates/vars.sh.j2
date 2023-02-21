@@ -5,7 +5,9 @@ export EDITOR="vim"
 export HISTSIZE="1000"
 export HISTFILESIZE="1000"
 export HISTCONTROL="ignoredups:erasedups"
+{% if configure_ssh_agent != false %}
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+{% endif %}
 
 # append to the history file, don't overwrite it
 shopt -s -q histappend
