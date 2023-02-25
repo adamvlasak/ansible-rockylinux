@@ -1,5 +1,5 @@
 ---
-- name: Prepare pathogen directories
+- name: Prepare plugged directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
