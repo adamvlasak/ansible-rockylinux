@@ -70,7 +70,7 @@ vim:
     - set backspace=indent,eol,start
     - set ts=4 sw=4 expandtab smarttab
     - autocmd FileType yaml setlocal ts=2 sw=2
-    - autocmd FileType yml setlocal ts=2 sw=2
+    - autocmd FileType yaml.ansible setlocal ts=2 sw=2
     - autocmd FileType markdown setlocal ts=2 sw=2
     - autocmd FileType make setlocal ts=2 sw=2 noexpandtab
     - autocmd BufWritePre *.md :%s/\s\+$//e
