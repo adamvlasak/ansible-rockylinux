@@ -55,8 +55,7 @@ vim:
     - let g:ansible_with_keywords_highlight = 'Constant'
     - noremap ; :Files<CR>
   rc:
-    - noremap \ :%s/\s\+$//e<CR>
-    - syntax on
+    - noremap <leader>s :%s/\s\+$//e<CR>
     - set ttyfast
     - set lazyredraw
     - set nocompatible
@@ -78,3 +77,4 @@ vim:
     - autocmd BufWritePre *.yaml :%s/\s\+$//e
     - autocmd BufWritePre *.j2 :%s/\s\+$//e
     - colorscheme default
+    - set background=dark
