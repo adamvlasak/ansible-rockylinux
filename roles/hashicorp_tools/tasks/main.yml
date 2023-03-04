@@ -11,7 +11,7 @@
 
 - name: Install hashicorp tools
   ansible.builtin.dnf:
-    name: ["packer", "terraform"]
+    name: [ "packer", "terraform" ]
     state: present
   tags:
     - hashicorp-tools

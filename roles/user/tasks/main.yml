@@ -69,9 +69,9 @@
     group: "{{ user.login }}"
     mode: 0600
   loop:
-    - {src: bashrc.j2, dest: "/home/{{ user.login }}/.bashrc"}
-    - {src: tmux.conf.j2, dest: "/home/{{ user.login }}/.tmux.conf"}
-    - {src: gitconfig.j2, dest: "/home/{{ user.login }}/.gitconfig"}
+    - { src: bashrc.j2, dest: "/home/{{ user.login }}/.bashrc" }
+    - { src: tmux.conf.j2, dest: "/home/{{ user.login }}/.tmux.conf" }
+    - { src: gitconfig.j2, dest: "/home/{{ user.login }}/.gitconfig" }
   tags:
     - user
 
