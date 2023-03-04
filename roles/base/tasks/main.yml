@@ -28,14 +28,13 @@
 - name: Set machine hostname
   ansible.builtin.hostname:
     name: "{{ hostname }}"
-  when: hostname is defined and wsl2 is false
+  when: hostname is defined and (wsl2 is not defined or wsl2 is false)
   tags:
     - base
 
 - name: Setup timezone
   community.general.timezone:
     name: Europe/Prague
-    hwclock: local
   tags:
     - base
 
@@ -46,7 +45,7 @@
     user: root
     group: root
     mode: 0600
-  when: wsl2 is false
+  when: wsl2 is not defined or wsl2 is false
   notify: Restart ssh
   tags:
     - base

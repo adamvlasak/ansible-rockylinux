@@ -57,7 +57,7 @@
   loop:
     - root
     - "{{ user.login }}"
-  when: wsl2 is false
+  when: wsl2 is not defined or wsl2 is false
   tags:
     - user
 
