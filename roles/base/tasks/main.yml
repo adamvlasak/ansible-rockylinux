@@ -17,6 +17,13 @@
   tags:
     - base
 
+- name: Replace curl-minimal with curl
+  ansible.builtin.command: dnf swap -y curl-minimal curl
+  changed_when: false
+  notify: Dnf clean
+  tags:
+    - base
+
 - name: Install necessary packages
   ansible.builtin.dnf:
     name: "{{ packages }}"

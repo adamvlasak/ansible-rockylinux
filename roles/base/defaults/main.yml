@@ -7,7 +7,6 @@ packages:
   - bash-completion
   - bind-utils
   - ca-certificates
-  - curl
   - dnf-plugin-versionlock
   - file
   - git
