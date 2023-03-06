@@ -1,24 +1,10 @@
 set -g default-shell /bin/bash
-set-option -ga terminal-overrides ",{{ env.term | default('xterm-256color') }}:Tc"
+set-option -sa terminal-overrides ",{{ env.term | default('xterm-256color') }}:Tc"
 set -g default-terminal "screen-256color"
 
 set -g base-index 1
 setw -g pane-base-index 1
 set -g renumber-windows on
-
-bind-key j select-pane -D
-bind-key k select-pane -U
-bind-key h select-pane -L
-bind-key l select-pane -R
-
-bind-key J resize-pane -D 5
-bind-key K resize-pane -U 5
-bind-key H resize-pane -L 5
-bind-key L resize-pane -R 5
-
-bind-key x kill-pane
-
-set -g focus-events on
 
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
