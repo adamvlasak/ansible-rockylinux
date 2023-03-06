@@ -1,6 +1,5 @@
 set -g default-shell /bin/bash
-set-option -sa terminal-overrides ",{{ env.term | default('xterm-256color') }}:Tc"
-set -g default-terminal "screen-256color"
+set -g default-terminal "{{ shell.term | default('xterm-256color') }}"
 
 set -g base-index 1
 setw -g pane-base-index 1
