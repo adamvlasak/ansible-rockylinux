@@ -26,7 +26,7 @@
   tags:
     - vim
 
-- name: Provision .vimrc
+- name: Configure .vimrc
   ansible.builtin.template:
     dest: "{{ item }}"
     src: vimrc

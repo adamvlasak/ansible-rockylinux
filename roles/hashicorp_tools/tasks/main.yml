@@ -1,5 +1,5 @@
 ---
-- name: Setup hashicorp repository
+- name: Configure hashicorp tools
   when: hashicorp_tools_enabled is true
   tags:
     - hashicorp-tools

@@ -49,7 +49,7 @@
         group: "{{ user.login }}"
         mode: 0644
 
-- name: Setup authorized_keys for all intended users
+- name: Configure authorized_keys for all intended users
   ansible.posix.authorized_key:
     user: "{{ item }}"
     key: "{{ user.ssh_pubkey }}"
@@ -61,7 +61,7 @@
   tags:
     - user
 
-- name: Provision dotfiles
+- name: Configure dotfiles
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -75,7 +75,7 @@
   tags:
     - user
 
-- name: Setup environment variables
+- name: Configure environment variables
   ansible.builtin.template:
     src: vars.sh.j2
     dest: /etc/profile.d/vars.sh

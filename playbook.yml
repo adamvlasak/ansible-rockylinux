@@ -1,5 +1,5 @@
 ---
-- name: Setup work machine
+- name: Configure rocky dev box
   vars_files: vars.yml
   hosts: all
   roles:

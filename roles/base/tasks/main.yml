@@ -32,7 +32,7 @@
   tags:
     - base
 
-- name: Setup /etc/hosts
+- name: Configure /etc/hosts
   ansible.builtin.template:
     src: hosts.j2
     dest: /etc/hosts
@@ -43,14 +43,14 @@
   tags:
     - base
 
-- name: Set machine hostname
+- name: Configure machine hostname
   ansible.builtin.hostname:
     name: "{{ hostname }}"
   when: hostname is defined and (wsl2 is not defined or wsl2 is false)
   tags:
     - base
 
-- name: Setup timezone
+- name: Configure timezone
   community.general.timezone:
     name: Europe/Prague
   tags:
