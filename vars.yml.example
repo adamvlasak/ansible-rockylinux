@@ -10,7 +10,6 @@ configure_ssh_agent: false
 user:
   login: "johndoe"
   groups:
-    - johndoe
     - users
     - wheel
     - docker
