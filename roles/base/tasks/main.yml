@@ -32,6 +32,17 @@
   tags:
     - base
 
+- name: Setup /etc/hosts
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
+  when: wsl2 is not defined or wsl2 is false
+  tags:
+    - network
+
 - name: Set machine hostname
   ansible.builtin.hostname:
     name: "{{ hostname }}"
