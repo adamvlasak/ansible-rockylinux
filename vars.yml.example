@@ -55,7 +55,7 @@ vim:
     - let g:ansible_with_keywords_highlight = 'Constant'
     - noremap ; :Files<CR>
   rc:
-    - noremap <leader>s :%s/\s\+$//e<CR>
+    - noremap <leader>t :%s/\s\+$//e<CR>
     - set ttyfast
     - set lazyredraw
     - set nocompatible
