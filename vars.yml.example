@@ -78,3 +78,4 @@ vim:
     - autocmd BufWritePre *.j2 :%s/\s\+$//e
     - colorscheme default
     - set background=dark
+    - highlight VertSplit cterm=NONE
