@@ -1,6 +1,0 @@
----
-- name: Restart docker
-  ansible.builtin.systemd:
-    name: docker
-    enabled: true
-    state: restarted
