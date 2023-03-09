@@ -15,7 +15,6 @@ user:
     - docker
   email: "john@doe.org"
   fullname: "John Doe"
-  ssh_pubkey: "ssh-rsa AAAXXXfoobar john@doe.org"
 
 shell:
   aliases:
