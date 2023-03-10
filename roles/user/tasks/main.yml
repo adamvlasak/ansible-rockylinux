@@ -24,6 +24,16 @@
   tags:
     - user
 
+- name: Create .ssh directory
+  ansible.builtin.file:
+    path: "/home/{{ user.login }}/.ssh"
+    state: directory
+    owner: "{{ user.login }}"
+    group: "{{ user.login }}"
+    mode: "0700"
+  tags:
+    - user
+
 - name: Configure ssh-agent
   when: configure_ssh_agent is true
   tags:
