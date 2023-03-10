@@ -29,7 +29,7 @@
 - name: Configure .vimrc
   ansible.builtin.template:
     dest: "{{ item }}"
-    src: vimrc
+    src: vimrc.j2
     owner: "{{ user.login }}"
     group: "{{ user.login }}"
     mode: "0600"
