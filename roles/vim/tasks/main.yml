@@ -5,7 +5,7 @@
     state: directory
     owner: "{{ user.login }}"
     group: "{{ user.login }}"
-    mode: 0700
+    mode: "0700"
   loop:
     - /home/{{ user.login }}/.vim
     - /home/{{ user.login }}/.vim/autoload
@@ -19,7 +19,7 @@
     dest: "{{ item }}"
     owner: "{{ user.login }}"
     group: "{{ user.login }}"
-    mode: 0500
+    mode: "0500"
   when: not ansible_check_mode
   loop:
     - /home/{{ user.login }}/.vim/autoload/plug.vim
@@ -32,7 +32,7 @@
     src: vimrc
     owner: "{{ user.login }}"
     group: "{{ user.login }}"
-    mode: 0600
+    mode: "0600"
   loop:
     - "/home/{{ user.login }}/.vimrc"
     - "/root/.vimrc"

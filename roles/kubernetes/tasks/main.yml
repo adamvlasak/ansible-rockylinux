@@ -22,4 +22,4 @@
         dest: /usr/local/bin/kubectl
         owner: root
         group: root
-        mode: 0777
+        mode: "0777"

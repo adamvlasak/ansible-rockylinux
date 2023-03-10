@@ -35,7 +35,7 @@
         state: directory
         owner: "{{ user.login }}"
         group: "{{ user.login }}"
-        mode: 0700
+        mode: "0700"
       loop:
         - "/home/{{ user.login }}/.config"
         - "/home/{{ user.login }}/.config/systemd"
@@ -47,7 +47,7 @@
         dest: "/home/{{ user.login }}/.config/systemd/user/ssh-agent.service"
         owner: "{{ user.login }}"
         group: "{{ user.login }}"
-        mode: 0644
+        mode: "0644"
 
 - name: Configure authorized_keys for all intended users
   ansible.posix.authorized_key:
@@ -67,7 +67,7 @@
     dest: "{{ item.dest }}"
     owner: "{{ user.login }}"
     group: "{{ user.login }}"
-    mode: 0600
+    mode: "0600"
   loop:
     - { src: bashrc.j2, dest: "/home/{{ user.login }}/.bashrc" }
     - { src: tmux.conf.j2, dest: "/home/{{ user.login }}/.tmux.conf" }
@@ -79,6 +79,6 @@
   ansible.builtin.template:
     src: vars.sh.j2
     dest: /etc/profile.d/vars.sh
-    mode: 0644
+    mode: "0644"
   tags:
     - user

@@ -10,7 +10,7 @@
         dest: /etc/yum.repos.d/hashicorp.repo
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
 
     - name: Install hashicorp tools
       ansible.builtin.dnf:
@@ -23,4 +23,4 @@
         dest: /usr/bin/terragrunt
         owner: root
         group: root
-        mode: 0755
+        mode: "0755"
