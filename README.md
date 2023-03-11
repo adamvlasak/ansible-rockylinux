@@ -26,7 +26,7 @@ user:
   ssh_pubkey: "..."             # set ONLY when you work with remote machine over SSH (delete otherwise)
 ...
 ```
-There are more variables (see `vars.yml.example`).` To be able to run this playbook please make a copy of `vars.yml.example` with following command:
+There are more variables (see `vars.yml.example`). To be able to run this playbook please make a copy of `vars.yml.example` with following command:
 ```
 $ cp vars.example vars.yml
 ```
