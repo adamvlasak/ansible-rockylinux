@@ -65,6 +65,8 @@ vim:
     - set incsearch
     - set number
     - set relativenumber
+    - set splitbelow
+    - set splitright
     - set backspace=indent,eol,start
     - set ts=4 sw=4 expandtab smarttab
     - autocmd FileType yaml setlocal ts=2 sw=2
