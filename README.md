@@ -26,6 +26,9 @@ user:
   ssh_pubkey: "..."             # set ONLY when you work with remote machine over SSH (delete otherwise)
 ...
 ```
+
+## Configure playbook
+
 There are more variables (see `vars.yml.example`). To be able to run this playbook please make a copy of `vars.yml.example` with following command:
 ```
 $ cp vars.example vars.yml
@@ -39,7 +42,7 @@ $ python3 -m venv .env/
 $ . .env/bin/activate
 $ pip install -r requirements.txt
 ```
-Now you can see `ansible`, `ansible-lint`, `yamllint` and `molecule` commands.
+Now you can see `ansible`, `ansible-lint` and  `yamllint`.
 
 ## Run the playbook
 
