@@ -11,7 +11,7 @@ if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
 else
     GIT_BRANCH=""
 fi
-export PS1="\[$(tput setaf {{ shell.ps1colors.user }})\]\u\[$(tput setaf {{ shell.ps1colors.at }})\]@\[$(tput setaf {{ shell.ps1colors.host }})\]\H \[$(tput setaf {{ shell.ps1colors.wd }})\]\w${GIT_BRANCH}\[$(tput sgr0)\] $ "
+PS1="\[$(tput setaf {{ shell.ps1colors.user }})\]\u\[$(tput setaf {{ shell.ps1colors.at }})\]@\[$(tput setaf {{ shell.ps1colors.host }})\]\H \[$(tput setaf {{ shell.ps1colors.wd }})\]\w${GIT_BRANCH}\[$(tput sgr0)\] $ "
 
 if [ -d ~/.local/bin ]; then
     export PATH="${PATH}:~/.local/bin";
