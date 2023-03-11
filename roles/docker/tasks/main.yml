@@ -1,8 +1,11 @@
 ---
 - name: Add yum repository for docker
-  ansible.builtin.command: dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-  args:
-    creates: /etc/yum.repos.d/docker-ce.repo
+  ansible.builtin.template:
+    src: docker-ce.repo.j2
+    dest: /etc/yum.repos.d/docker-ce.repo
+    owner: root
+    group: root
+    mode: "0644"
   when: docker_enabled is defined and docker_enabled is true
   tags:
     - docker
