@@ -53,7 +53,7 @@ $ ssh-copy-id root@machine
 ```
 and use following ansible inventory:
 ```
-echo "hostname.org ansible_user=root ansible_host=<IP>
+echo "hostname.org ansible_user=root ansible_host=<IP>" > hosts
 ```
 Then you can run this playbook:
 ```
