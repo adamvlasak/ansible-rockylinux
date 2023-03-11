@@ -45,7 +45,7 @@ Now you can see `ansible`, `ansible-lint`, `yamllint` and `molecule` commands.
 
 When you're configuring WSL based distro, create following ansible inventory:
 ```
-echo "localhost ansible_connection=local" > hosts
+$ echo "localhost ansible_connection=local" > hosts
 ```
 When you're configuring remote machine over SSH, make sure you have your public key set:
 ```
@@ -53,7 +53,7 @@ $ ssh-copy-id root@machine
 ```
 and use following ansible inventory:
 ```
-echo "hostname.org ansible_user=root ansible_host=<IP>" > hosts
+$ echo "hostname.org ansible_user=root ansible_host=<IP>" > hosts
 ```
 Then you can run this playbook:
 ```
