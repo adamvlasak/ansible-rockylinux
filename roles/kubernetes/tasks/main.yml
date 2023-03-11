@@ -13,12 +13,14 @@
     - kubernetes
   block:
     - name: Get latest version of kubectl
-      ansible.builtin.command: curl -L -s https://dl.k8s.io/release/stable.txt
+      ansible.builtin.uri:
+        url: https://dl.k8s.io/release/stable.txt
+        return_content: true
       register: kubectl_version
 
     - name: Download kubectl
       ansible.builtin.get_url:
-        url: "https://dl.k8s.io/release/{{ kubectl_version.stdout }}/bin/linux/amd64/kubectl"
+        url: "https://dl.k8s.io/release/{{ kubectl_version.content }}/bin/linux/amd64/kubectl"
         dest: /usr/local/bin/kubectl
         owner: root
         group: root
