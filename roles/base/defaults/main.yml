@@ -17,6 +17,7 @@ packages:
   - iftop
   - iotop-c
   - iproute
+  - iputils
   - man
   - man-pages
   - mc
