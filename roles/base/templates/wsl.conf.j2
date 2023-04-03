@@ -2,8 +2,8 @@
 systemd=true
 
 [interop]
-enabled=false
-appendWindowsPath=false
+enabled={{ wsl.interop | default("true") }}
+appendWindowsPath={{ wsl.win_path | default("true") }}
 
 [user]
 default={{ user.login }}

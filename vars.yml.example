@@ -4,8 +4,12 @@ hostname: example.org
 docker_enabled: false
 kubernetes_enabled: false
 hashicorp_tools_enabled: false
-wsl2: false
 configure_ssh_agent: false
+
+wsl:
+  enabled: true
+  interop: true
+  win_path: true
 
 user:
   login: "johndoe"
