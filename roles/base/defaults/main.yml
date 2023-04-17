@@ -12,6 +12,7 @@ packages:
   - git
   - glances
   - glibc-common
+  - glibc-langpack-en
   - golang
   - htop
   - iftop
