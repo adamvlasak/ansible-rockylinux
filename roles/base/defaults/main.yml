@@ -3,7 +3,6 @@ yum_cleanup: true
 
 packages:
   - ShellCheck
-  - ansible
   - bash-completion
   - bind-utils
   - ca-certificates
