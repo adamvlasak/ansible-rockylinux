@@ -5,6 +5,3 @@
     daemon_reload: true
     state: reloaded
     enabled: true
-
-- name: Dnf clean
-  ansible.builtin.command: dnf clean all

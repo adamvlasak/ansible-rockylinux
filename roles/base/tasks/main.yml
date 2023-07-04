@@ -20,7 +20,6 @@
 - name: Replace curl-minimal with curl
   ansible.builtin.command: dnf swap -y curl-minimal curl
   changed_when: false
-  notify: Dnf clean
   tags:
     - base
 
@@ -28,7 +27,6 @@
   ansible.builtin.dnf:
     name: "{{ packages }}"
     state: present
-  notify: Dnf clean
   tags:
     - base
 

@@ -1,6 +1,4 @@
 ---
-yum_cleanup: true
-
 packages:
   - ShellCheck
   - bash-completion
